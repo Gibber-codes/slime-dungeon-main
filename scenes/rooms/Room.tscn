@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxld6p7bttxv8"]
+[gd_scene load_steps=14 format=3 uid="uid://dxld6p7bttxv8"]
 
 [ext_resource type="Script" uid="uid://cmjjacbuytey5" path="res://scripts/systems/Room.gd" id="1_iaoa5"]
 [ext_resource type="Texture2D" uid="uid://dlq50psvdtvy8" path="res://assets/tilesets/dungeon_tiles_middle.png" id="2_yvx7d"]
@@ -39,6 +39,9 @@ texture_region_size = Vector2i(32, 32)
 3:3/0 = 0
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3n8xs"]
+scenes/1/scene = ExtResource("6_3n8xs")
+
 [sub_resource type="TileSet" id="TileSet_iaoa5"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -47,6 +50,7 @@ sources/0 = SubResource("TileSetAtlasSource_1o45p")
 sources/1 = SubResource("TileSetAtlasSource_h8v3a")
 sources/2 = SubResource("TileSetAtlasSource_rvxix")
 sources/3 = SubResource("TileSetAtlasSource_3n8xs")
+sources/4 = SubResource("TileSetScenesCollectionSource_3n8xs")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pnwq"]
 
