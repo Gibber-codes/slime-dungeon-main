@@ -1,0 +1,4 @@
+[gd_scene load_steps=0 format=3 uid="uid://d3a4b5c6e7f8h"]
+
+[node name="PhysicsManager" type="Node"]
+

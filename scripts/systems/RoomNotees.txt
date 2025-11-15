@@ -1,0 +1,3 @@
+Script: Room.gd
+
+Handles defender spawning and victory condition.

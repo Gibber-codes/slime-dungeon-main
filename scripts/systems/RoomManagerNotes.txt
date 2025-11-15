@@ -1,0 +1,3 @@
+Script: RoomManager.gd
+
+Handles room progression, difficulty scaling, and reset triggers.

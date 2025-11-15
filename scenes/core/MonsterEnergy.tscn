@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2lam3n5p8qwt"]
+
+[ext_resource type="Script" uid="uid://cl4dv1dup0bdx" path="res://autoloads/MonsterEnergy.gd" id="1_rwx4t"]
+
+[node name="MonsterEnergy" type="Node"]
+script = ExtResource("1_rwx4t")

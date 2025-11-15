@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3p7nak2r5xwq"]
+
+[ext_resource type="Script" uid="uid://dfe40uebhgvua" path="res://scripts/entities/Projectile.gd" id="1_g52qf"]
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_g52qf")

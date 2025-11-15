@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq6a0wjko45ta"]
+
+[ext_resource type="PackedScene" uid="uid://dxld6p7bttxv8" path="res://scenes/rooms/Room.tscn" id="2_room"]
+[ext_resource type="PackedScene" uid="uid://dfl28fd40ljiv" path="res://scenes/entities/Slime.tscn" id="3_hud"]
+
+[node name="Main" type="Node"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="RoomManager" type="Node" parent="."]
+
+[node name="GameManager" type="Node" parent="."]
+
+[node name="Slime" parent="." instance=ExtResource("3_hud")]
+position = Vector2(0, 64)
+
+[node name="Room" parent="." instance=ExtResource("2_room")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvn8k2p4qm7xr"]
+
+[ext_resource type="Script" uid="uid://b03r8ma4442vs" path="res://autoloads/NodeSystem.gd" id="1_a1b2c"]
+[ext_resource type="Resource" path="res://resources/nodes/Wisdom.tres" id="2_wisdom"]
+[ext_resource type="Resource" path="res://resources/nodes/Strength.tres" id="3_strength"]
+[ext_resource type="Resource" path="res://resources/nodes/Intelligence.tres" id="4_intelligence"]
+[ext_resource type="Resource" path="res://resources/nodes/Constitution.tres" id="5_constitution"]
+[ext_resource type="Resource" path="res://resources/nodes/Stamina.tres" id="6_stamina"]
+[ext_resource type="Resource" path="res://resources/nodes/Agility.tres" id="7_agility"]
+
+[node name="NodeSystem" type="Node"]
+script = ExtResource("1_a1b2c")
+wisdom = ExtResource("2_wisdom")
+strength = ExtResource("3_strength")
+intelligence = ExtResource("4_intelligence")
+constitution = ExtResource("5_constitution")
+stamina = ExtResource("6_stamina")
+agility = ExtResource("7_agility")

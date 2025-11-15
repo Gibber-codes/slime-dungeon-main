@@ -1,0 +1,4 @@
+[gd_scene load_steps=0 format=3 uid="uid://vbp5fyt2j8o"]
+
+[node name="TestBounce" type="Node2D"]
+

@@ -1,0 +1,5 @@
+Script: Defender.gd
+
+On body_entered(Area2D) → attack slime.
+
+Emits defeated signal to RoomManager or GameManager.

@@ -1,0 +1,4 @@
+[gd_scene load_steps=0 format=3 uid="uid://d2a3b4c5e6f7i"]
+
+[node name="NodeUpgradeMenu" type="Control"]
+

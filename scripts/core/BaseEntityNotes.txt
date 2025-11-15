@@ -1,0 +1,7 @@
+BaseEntity.gd
+
+Type: Abstract script only (no scene)
+
+Inherited by both Slime and Defender.
+
+Handles shared stats, damage, regen, and death logic.
