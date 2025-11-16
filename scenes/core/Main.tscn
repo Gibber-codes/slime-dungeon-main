@@ -12,6 +12,8 @@
 
 [node name="Slime" parent="." instance=ExtResource("3_hud")]
 position = Vector2(-3, 85)
+momentum_gain_rate = 10.0
+momentum_speed_multiplier = 0.5
 
 [node name="Room" parent="." instance=ExtResource("2_room")]
 

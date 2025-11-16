@@ -69,57 +69,6 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65535, 0, 0, -1, 0, 0, -65536, 0, 
 [node name="Defenders" type="Node2D" parent="."]
 position = Vector2(-96, -96)
 
-[node name="Defender" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(-15, -16)
-
-[node name="Defender2" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(116, -12)
-
-[node name="Defender3" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(-16, 16)
-
-[node name="Defender4" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(-16, 48)
-
-[node name="Defender5" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(48, 144)
-
-[node name="Defender6" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(128, 144)
-
-[node name="Defender7" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(160, 64)
-
-[node name="Defender8" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(48, 48)
-
-[node name="Defender9" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(-16, 160)
-
-[node name="Defender10" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(-16, 96)
-
-[node name="Defender11" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(32, 192)
-
-[node name="Defender12" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(96, 208)
-
-[node name="Defender13" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(96, 112)
-
-[node name="Defender14" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(112, 32)
-
-[node name="Defender15" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(176, -16)
-
-[node name="Defender16" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(176, 128)
-
-[node name="Defender17" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(176, 192)
-
 [node name="Obstacles" type="Node2D" parent="."]
 position = Vector2(-96, -96)
 
@@ -129,7 +78,17 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone"]
+position = Vector2(0, -30)
 shape = SubResource("RectangleShape2D_1pnwq")
 
 [node name="SlimeSpawn" type="Marker2D" parent="."]
 position = Vector2(0, 80)
+
+[node name="Defender" parent="." instance=ExtResource("6_3n8xs")]
+position = Vector2(-81, 57)
+
+[node name="Defender2" parent="." instance=ExtResource("6_3n8xs")]
+position = Vector2(-61, -65)
+
+[node name="Defender3" parent="." instance=ExtResource("6_3n8xs")]
+position = Vector2(76, 54)
