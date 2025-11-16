@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0l4kg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eblc1"]
+radius = 24.083189
 
 [node name="Defender" type="CharacterBody2D"]
 collision_layer = 4
@@ -26,10 +27,10 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_eblc1")
-script = ExtResource("1_eblc1")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -35.0
 offset_top = -44.0
 offset_right = 36.0
 offset_bottom = -17.0
+show_percentage = false
