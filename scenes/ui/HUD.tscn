@@ -1,3 +1,324 @@
-[gd_scene format=3 uid="uid://y18oyxrqu456"]
+[gd_scene load_steps=6 format=3 uid="uid://y18oyxrqu456"]
+
+[ext_resource type="Texture2D" uid="uid://c4i1ek6ort3fc" path="res://scenes/ui/32 bit Slime Game Mock.svg" id="2_6ll6g"]
+[ext_resource type="Texture2D" uid="uid://bex1eutwj5x4a" path="res://scenes/ui/test.jpg" id="2_ig75s"]
+[ext_resource type="Texture2D" uid="uid://qwargijijwv7" path="res://scenes/ui/test2.jpg" id="3_4ed8p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jlufg"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_l20r4"]
 
 [node name="Hud" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 131.0
+offset_top = 83.0
+offset_right = 754.0
+offset_bottom = 700.0
+color = Color(0.21770102, 0.21770105, 0.21770105, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_right = 864.0
+offset_bottom = 64.0
+color = Color(0.21770102, 0.21770105, 0.21770105, 1)
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 864.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Control2"]
+layout_mode = 0
+offset_right = 416.0
+offset_bottom = 64.0
+color = Color(0.21770102, 0.21770105, 0.21770105, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="TextureButton" type="TextureButton" parent="Control2/ColorRect3/HBoxContainer"]
+custom_minimum_size = Vector2(64, 54)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control2/ColorRect3/HBoxContainer/TextureButton"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 54.0
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="TextureButton2" type="TextureButton" parent="Control2/ColorRect3/HBoxContainer"]
+custom_minimum_size = Vector2(64, 54)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control2/ColorRect3/HBoxContainer/TextureButton2"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 54.0
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="Control" type="Control" parent="Control2"]
+anchors_preset = 0
+offset_top = 64.0
+offset_right = 416.0
+offset_bottom = 428.0
+
+[node name="Panel" type="Panel" parent="Control2/Control"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 411.0
+offset_bottom = 369.0
+
+[node name="Control2" type="Control" parent="Control2"]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 436.0
+offset_right = 125.0
+offset_bottom = 708.0
+
+[node name="monsterCore" type="TextureProgressBar" parent="Control2/Control2"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = 110.0
+offset_right = 119.0
+offset_bottom = 270.0
+value = 35.0
+fill_mode = 3
+texture_under = ExtResource("2_ig75s")
+texture_over = ExtResource("2_6ll6g")
+texture_progress = ExtResource("3_4ed8p")
+
+[node name="ColorRect2" type="ColorRect" parent="Control2/Control2/monsterCore"]
+visible = false
+material = SubResource("ShaderMaterial_jlufg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.81960785, 1, 1, 1)
+
+[node name="Control" type="Control" parent="Control2/Control2"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 148.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2/Control2/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="slimeSpeedBar" type="TextureProgressBar" parent="Control2/Control2/Control/VBoxContainer"]
+custom_minimum_size = Vector2(120, 16)
+layout_mode = 2
+fill_mode = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Control2/Control2/Control/VBoxContainer/slimeSpeedBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.90588236, 0.68235296, 1)
+
+[node name="slimeFrenzyBar" type="TextureProgressBar" parent="Control2/Control2/Control/VBoxContainer"]
+custom_minimum_size = Vector2(120, 16)
+layout_mode = 2
+fill_mode = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Control2/Control2/Control/VBoxContainer/slimeFrenzyBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.63469666, 0.99920386, 0.6117684, 1)
+
+[node name="slimeMomentumBar" type="TextureProgressBar" parent="Control2/Control2/Control/VBoxContainer"]
+custom_minimum_size = Vector2(120, 16)
+layout_mode = 2
+fill_mode = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Control2/Control2/Control/VBoxContainer/slimeMomentumBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.46749705, 0.59505916, 1, 1)
+
+[node name="slimeMomentumBar2" type="TextureProgressBar" parent="Control2/Control2/Control/VBoxContainer"]
+custom_minimum_size = Vector2(120, 16)
+layout_mode = 2
+fill_mode = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Control2/Control2/Control/VBoxContainer/slimeMomentumBar2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.56089723, 0.41611165, 1, 1)
+
+[node name="slimeHealthBar" type="TextureProgressBar" parent="Control2/Control2/Control/VBoxContainer"]
+custom_minimum_size = Vector2(120, 16)
+layout_mode = 2
+fill_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control2/Control2/Control/VBoxContainer/slimeHealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.64640296, 0.5806868, 0.99607843)
+
+[node name="ColorRect2" type="ColorRect" parent="Control2"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 436.0
+offset_right = 400.0
+offset_bottom = 708.0
+color = Color(0.21770102, 0.21770105, 0.21770105, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 360.0
+offset_right = 96.0
+offset_bottom = 720.0
+
+[node name="SlimeHealth" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 220.0
+offset_right = 410.0
+offset_bottom = 247.0
+fill_mode = 3
+
+[node name="SpeedBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 294.0
+offset_right = 400.0
+offset_bottom = 321.0
+
+[node name="momentiumBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 257.0
+offset_right = 403.0
+offset_bottom = 284.0
+
+[node name="monsterCore" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 269.0
+offset_right = 91.0
+offset_bottom = 355.0
+fill_mode = 3
+texture_under = SubResource("ImageTexture_l20r4")
+
+[node name="ColorRect2" type="ColorRect" parent="Control/monsterCore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.81960785, 1, 1, 1)
+
+[node name="Control" type="Control" parent="Control"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 1
+anchors_preset = 0
+offset_left = 5.0
+offset_right = 69.0
+offset_bottom = 264.0
+
+[node name="slimeHealthBar" type="TextureProgressBar" parent="Control/Control"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_vertical = 2
+fill_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control/Control/slimeHealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.64640296, 0.5806868, 0.99607843)
+
+[node name="slimeMomentumBar" type="TextureProgressBar" parent="Control/Control"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Control/Control/slimeMomentumBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.46749705, 0.59505916, 1, 1)
+
+[node name="slimeSpeedBar" type="TextureProgressBar" parent="Control/Control"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+fill_mode = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Control/Control/slimeSpeedBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.90588236, 0.68235296, 1)

@@ -3,22 +3,5 @@
 [ext_resource type="Script" uid="uid://cwby1usfet7g4" path="res://scripts/ui/SlimeUI.gd" id="1_d2gw2"]
 
 [node name="UI" type="CanvasLayer"]
+follow_viewport_enabled = true
 script = ExtResource("1_d2gw2")
-
-[node name="SlimeHealth" type="ProgressBar" parent="."]
-offset_left = 40.0
-offset_top = 176.0
-offset_right = 265.0
-offset_bottom = 203.0
-
-[node name="SpeedBar" type="ProgressBar" parent="."]
-offset_left = 24.0
-offset_top = 277.0
-offset_right = 249.0
-offset_bottom = 304.0
-
-[node name="momentiumBar" type="ProgressBar" parent="."]
-offset_left = 28.0
-offset_top = 226.0
-offset_right = 253.0
-offset_bottom = 253.0
