@@ -11,14 +11,32 @@ offset_top = 176.0
 offset_right = 265.0
 offset_bottom = 203.0
 
+[node name="health" type="Label" parent="SlimeHealth"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "health"
+
 [node name="SpeedBar" type="ProgressBar" parent="."]
-offset_left = 24.0
-offset_top = 277.0
-offset_right = 249.0
-offset_bottom = 304.0
+offset_left = 40.0
+offset_top = 384.0
+offset_right = 265.0
+offset_bottom = 411.0
+
+[node name="Label" type="Label" parent="SpeedBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Speed"
 
 [node name="momentiumBar" type="ProgressBar" parent="."]
-offset_left = 28.0
-offset_top = 226.0
-offset_right = 253.0
-offset_bottom = 253.0
+offset_left = 33.0
+offset_top = 322.0
+offset_right = 258.0
+offset_bottom = 349.0
+
+[node name="Label" type="Label" parent="momentiumBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "momentium"

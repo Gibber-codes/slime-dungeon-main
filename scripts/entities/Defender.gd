@@ -8,6 +8,7 @@ signal attacked_player(damage: float)
 @export var attack_range: float = 64.0
 @export var attack_cooldown: float = 1.0
 @export var defender_type: String = "basic"
+@export var bounciness: float = 0.6  # How much velocity is retained when slime bounces off this defender
 
 ## Internal variables
 var slime_in_range: Node2D = null

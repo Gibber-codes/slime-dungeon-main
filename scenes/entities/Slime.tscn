@@ -13,6 +13,9 @@ collision_mask = 5
 floor_stop_on_slope = false
 floor_max_angle = 0.0
 script = ExtResource("1_q3i8h")
+momentum_gain_rate = 100.0
+momentum_speed_multiplier = 1.5
+bounciness = 0.9
 max_health = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
