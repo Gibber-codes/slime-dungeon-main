@@ -3,9 +3,19 @@
 ## Entity Hierarchy
 
 ```
-BaseEntity (Abstract)
+BaseEntity (Abstract - CharacterBody2D)
 ├── Slime (Player)
 └── Defender (Enemy)
+
+Obstacle (StaticBody2D - separate from BaseEntity)
+├── Barrel
+├── Crate
+└── Other environmental objects
+
+Targeting System: Uses Godot groups
+├── "seekable" group - Defenders and Obstacles that Slime can auto-seek
+├── "slime" group - The player Slime entity
+└── "defender" group - Enemy entities
 ```
 
 ---
@@ -118,11 +128,51 @@ Slime (CharacterBody2D)
 ### Current Status
 ⚠️ **Basic platformer implementation** - Has gravity and jump, needs bouncing physics and autonomous, non-input-driven movement
 
+### Auto-Seek Behavior
+
+The Slime features an **autonomous targeting system** that automatically seeks objects in the room when idle. This system is completely independent of player control.
+
+**How It Works:**
+
+1. **Auto-Seek Timer**
+   - Default duration: `9.0` seconds (configurable via `auto_seek_timer`)
+   - Counts down continuously during gameplay
+   - Reduced by the **Intelligence node** upgrade level
+
+2. **Timer Reset Conditions**
+   - Timer resets whenever the Slime collides with:
+     - Defenders (enemies)
+     - Obstacles (barrels, crates, etc.)
+     - Any object in the `"seekable"` group
+   - Timer does **NOT** reset when colliding with walls (TileMap collision)
+
+3. **Seeking Behavior (Timer Expires)**
+   - When timer reaches `0.0`, the Slime enters auto-seek mode
+   - Finds the nearest object in the `"seekable"` group
+   - Moves directly toward the target at `auto_seek_speed` (default: `50.0`)
+   - Continues seeking until collision occurs (which resets the timer)
+
+4. **Seekable Targets**
+   - **Defenders** - Enemy entities (always seekable)
+   - **Obstacles** - Barrels, crates, and other environmental objects
+   - Any Node2D added to the `"seekable"` group
+
+**Intelligence Node Effect:**
+- Each level of Intelligence reduces `auto_seek_timer` duration
+- Formula: `effective_timer = base_auto_seek_timer - (intelligence_level * reduction_per_level)`
+- Higher Intelligence = more frequent auto-seeking = more aggressive Slime
+
+**Implementation Notes:**
+- Auto-seek is **not** player-controlled; it's fully autonomous
+- The player influences this indirectly through Intelligence upgrades
+- Seeking uses simple direct movement, not physics-based bouncing
+- Once a collision occurs, normal bouncing physics resume
+
 ### Planned Features
-- [ ] Bouncing physics system
-- [ ] Momentum-based movement
-- [ ] Collision damage
-- [ ] Auto-seek/focus mode
+- [x] Bouncing physics system
+- [x] Momentum-based movement
+- [x] Collision damage
+- [ ] Auto-seek/focus mode (timer and seeking logic)
 - [ ] Visual momentum trail
 - [ ] Focus indicator
 - [ ] Explicitly **no direct WASD/arrow/gamepad control**; movement remains fully physics-driven and autonomous
@@ -152,6 +202,7 @@ Stationary enemy that attacks the player when in range. Emits signals when defea
 - **Attack Pattern:** Deals damage in circular area around themselves
 - **No Abilities:** No special attacks, status effects, or elemental damage in MVP
 - **Scaling:** HP, damage, and defense increase with room number
+- **Seekable:** Defenders are auto-seek targets for the Slime (added to `"seekable"` group)
 
 ### Exported Variables (Planned)
 ```gdscript
@@ -210,18 +261,19 @@ Defender (CharacterBody2D)
 **Node Type:** `StaticBody2D` or `RigidBody2D`
 
 ### Purpose
-Environmental objects that the slime bounces off of to create interesting physics-based movement patterns.
+Environmental objects that the slime bounces off of to create interesting physics-based movement patterns. Obstacles are also **seekable targets** for the Slime's auto-seek behavior.
 
 ### Obstacle Types (MVP)
 
 **Included:**
 - **Crates:** Destructible or indestructible boxes
 - **Barrels:** Round objects for bouncing
-- **Walls:** Room boundaries (TileMap collision)
+- **Walls:** Room boundaries (TileMap collision - **not seekable**)
 
 **Purpose in MVP:**
 - Shape bounce patterns for strategic movement
 - Create pinball-like physics gameplay
+- Serve as auto-seek targets when Slime is idle
 - No special effects or treasure drops in MVP
 
 **Future (Post-MVP):**
@@ -236,8 +288,16 @@ Environmental objects that the slime bounces off of to create interesting physic
 @export var friction: float = 0.1
 ```
 
+### Groups
+Obstacles should be added to the `"seekable"` group so the Slime can target them with auto-seek behavior.
+
+```gdscript
+func _ready() -> void:
+    add_to_group("seekable")
+```
+
 ### Current Status
-❌ **Not implemented** - Needs to be created
+⚠️ **Partially implemented** - Basic StaticBody2D exists, needs seekable group integration
 
 ---
 

@@ -26,6 +26,9 @@ func _ready() -> void:
 	physical_damage = 5.0
 	physical_defense = 1.0
 
+	# Add to seekable group for Slime auto-seek targeting
+	add_to_group("seekable")
+
 	# Get node references
 	attack_range_area = get_node("AttackRange")
 	health_bar = get_node("HealthBar")

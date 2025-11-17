@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1a2b3c4e5f6j"]
+[gd_scene load_steps=5 format=3 uid="uid://d1a2b3c4e5f6j"]
 
 [ext_resource type="Script" uid="uid://mu6wuta183cq" path="res://scripts/entities/Obstacle.gd" id="1_0motf"]
+[ext_resource type="Texture2D" uid="uid://di5rk34iwr713" path="res://assets/sprites/Pot.png" id="2_ukgmm"]
 
-[node name="Obstacle" type="StaticBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_euy4v"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ukgmm"]
+radius = 16.0
+
+[node name="Obstacle" type="StaticBody2D" groups=["seekable"]]
 script = ExtResource("1_0motf")
+is_destructible = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_euy4v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("2_ukgmm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ukgmm")
