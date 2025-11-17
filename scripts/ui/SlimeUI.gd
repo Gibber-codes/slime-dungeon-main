@@ -7,9 +7,9 @@ extends CanvasLayer
 var _slime: CharacterBody2D = null
 
 ## OnReady Variables
-@onready var health_bar: ProgressBar = $SlimeHealth
-@onready var speed_bar: ProgressBar = $SpeedBar
-@onready var momentum_bar: ProgressBar = $momentiumBar
+@onready var health_bar: ProgressBar = $Hud/Control/SlimeHealth
+@onready var speed_bar: ProgressBar = $Hud/Control/SpeedBar
+@onready var momentum_bar: ProgressBar = $Hud/Control/momentiumBar
 
 func _ready() -> void:
 	# Find the slime in the scene tree

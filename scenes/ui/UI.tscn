@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2a3b4c5e6f7g"]
+[gd_scene load_steps=3 format=3 uid="uid://d2a3b4c5e6f7g"]
 
 [ext_resource type="Script" uid="uid://cwby1usfet7g4" path="res://scripts/ui/SlimeUI.gd" id="1_d2gw2"]
+[ext_resource type="PackedScene" uid="uid://y18oyxrqu456" path="res://scenes/ui/HUD.tscn" id="2_m01cm"]
 
 [node name="UI" type="CanvasLayer"]
 follow_viewport_enabled = true
 script = ExtResource("1_d2gw2")
+
+[node name="Hud" parent="." instance=ExtResource("2_m01cm")]

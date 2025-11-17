@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qwargijijwv7"
-path="res://.godot/imported/test2.jpg-c151677acd49ee58ea9dbe6aeabe38a3.ctex"
+uid="uid://l4bp3irofxb2"
+path="res://.godot/imported/stone.jpg-1a9fb2c72f8f3d250fd3335b2a7ec29d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/test2.jpg"
-dest_files=["res://.godot/imported/test2.jpg-c151677acd49ee58ea9dbe6aeabe38a3.ctex"]
+source_file="res://assets/stone.jpg"
+dest_files=["res://.godot/imported/stone.jpg-1a9fb2c72f8f3d250fd3335b2a7ec29d.ctex"]
 
 [params]
 

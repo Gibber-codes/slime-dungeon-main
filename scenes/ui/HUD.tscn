@@ -1,29 +1,25 @@
 [gd_scene load_steps=6 format=3 uid="uid://y18oyxrqu456"]
 
-[ext_resource type="Texture2D" uid="uid://c4i1ek6ort3fc" path="res://scenes/ui/32 bit Slime Game Mock.svg" id="2_6ll6g"]
-[ext_resource type="Texture2D" uid="uid://bex1eutwj5x4a" path="res://scenes/ui/test.jpg" id="2_ig75s"]
-[ext_resource type="Texture2D" uid="uid://qwargijijwv7" path="res://scenes/ui/test2.jpg" id="3_4ed8p"]
+[ext_resource type="Texture2D" uid="uid://c4i1ek6ort3fc" path="res://assets/32 bit Slime Game Mock.svg" id="2_6ll6g"]
+[ext_resource type="Texture2D" uid="uid://bex1eutwj5x4a" path="res://assets/test.jpg" id="2_ig75s"]
+[ext_resource type="Texture2D" uid="uid://qwargijijwv7" path="res://assets/test2.jpg" id="3_4ed8p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jlufg"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_l20r4"]
 
-[node name="Hud" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 131.0
-offset_top = 83.0
-offset_right = 754.0
-offset_bottom = 700.0
-color = Color(0.21770102, 0.21770105, 0.21770105, 1)
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 864.0
 offset_bottom = 64.0
 color = Color(0.21770102, 0.21770105, 0.21770105, 1)
 
 [node name="Control2" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -207,7 +203,8 @@ offset_bottom = 708.0
 color = Color(0.21770102, 0.21770105, 0.21770105, 1)
 
 [node name="Control" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
+anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = 360.0

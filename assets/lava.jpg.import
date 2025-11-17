@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4d7jxtuuo0xi"
-path="res://.godot/imported/FgSwiS.jpg-802219bef53c6ef28255956fb0812529.ctex"
+uid="uid://vawj64hcavnb"
+path="res://.godot/imported/lava.jpg-315d04ed20ca080f060dbe1f2e0587b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/ui/FgSwiS.jpg"
-dest_files=["res://.godot/imported/FgSwiS.jpg-802219bef53c6ef28255956fb0812529.ctex"]
+source_file="res://assets/lava.jpg"
+dest_files=["res://.godot/imported/lava.jpg-315d04ed20ca080f060dbe1f2e0587b1.ctex"]
 
 [params]
 
