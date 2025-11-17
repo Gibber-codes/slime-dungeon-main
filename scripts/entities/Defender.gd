@@ -8,6 +8,7 @@ signal attacked_player(damage: float)
 @export var attack_range: float = 64.0
 @export var attack_cooldown: float = 1.0
 @export var defender_type: String = "basic"
+@export var bounciness: float = 0.6  # How much velocity is retained when slime bounces off this defender
 
 ## Internal variables
 var slime_in_range: Node2D = null
@@ -24,6 +25,9 @@ func _ready() -> void:
 	current_health = max_health
 	physical_damage = 5.0
 	physical_defense = 1.0
+
+	# Add to seekable group for Slime auto-seek targeting
+	add_to_group("seekable")
 
 	# Get node references
 	attack_range_area = get_node("AttackRange")

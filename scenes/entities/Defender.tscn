@@ -8,7 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_eblc1"]
 radius = 24.083189
 
-[node name="Defender" type="CharacterBody2D"]
+[node name="Defender" type="CharacterBody2D" groups=["seekable"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_eblc1")
