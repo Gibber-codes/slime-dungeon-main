@@ -1,11 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://y18oyxrqu456"]
+[gd_scene load_steps=10 format=3 uid="uid://y18oyxrqu456"]
 
-[ext_resource type="Texture2D" uid="uid://c4i1ek6ort3fc" path="res://assets/32 bit Slime Game Mock.svg" id="2_6ll6g"]
-[ext_resource type="Texture2D" uid="uid://bex1eutwj5x4a" path="res://assets/test.jpg" id="2_ig75s"]
-[ext_resource type="Texture2D" uid="uid://qwargijijwv7" path="res://assets/test2.jpg" id="3_4ed8p"]
+[ext_resource type="Texture2D" uid="uid://cyyl2bfji2blu" path="res://underBars.png" id="1_jvmx1"]
+[ext_resource type="Texture2D" uid="uid://bf2dbre7jmvvr" path="res://speedProgress.png" id="2_euikm"]
+[ext_resource type="Texture2D" uid="uid://crbkdubykprax" path="res://frenzyProgress.png" id="3_p4k5r"]
+[ext_resource type="Texture2D" uid="uid://dfjiqitsh4t4k" path="res://momentumProgress.png" id="4_38nk3"]
 [ext_resource type="Texture2D" uid="uid://oghkrd8tebxx" path="res://Slime Screen overlay.png" id="4_ig75s"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_l20r4"]
+[ext_resource type="Texture2D" uid="uid://bb1b5j1dye7ik" path="res://focusProgress.png" id="5_6bi52"]
+[ext_resource type="Texture2D" uid="uid://bwa6sswbsb7u4" path="res://healthProgress.png" id="6_e8r00"]
+[ext_resource type="Texture2D" uid="uid://kcerjbxmye5n" path="res://assets/textures/underMonsterCore.png" id="7_4wy6o"]
+[ext_resource type="Texture2D" uid="uid://6imhodpabc6a" path="res://assets/textures/monsterCoreProgress.png" id="8_blesy"]
 
 [node name="Hud" type="Control"]
 texture_filter = 1
@@ -23,348 +26,214 @@ handle_input_locally = false
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
-[node name="Control2" type="Control" parent="SubViewportContainer/SubViewport"]
+[node name="menuRight" type="Control" parent="SubViewportContainer/SubViewport"]
 layout_mode = 3
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -226.0
+offset_left = -248.66666
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="SubViewportContainer/SubViewport/Control2"]
+[node name="menuTop" type="Control" parent="SubViewportContainer/SubViewport/menuRight"]
 anchors_preset = 0
-offset_top = 36.0
-offset_right = 230.0
-offset_bottom = 202.33334
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/Control2/Control"]
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/menuRight/menuTop"]
 layout_mode = 0
+offset_left = 20.0
+offset_right = 68.0
+offset_bottom = 48.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/menuRight/menuTop"]
+layout_mode = 0
+offset_left = 75.33334
 offset_top = 5.0
-offset_right = 230.0
-offset_bottom = 177.0
+offset_right = 245.33334
+offset_bottom = 31.0
+theme_override_constants/separation = 14
 
-[node name="Control2" type="Control" parent="SubViewportContainer/SubViewport/Control2"]
-anchors_preset = 0
-offset_left = -21.333324
-offset_top = 216.0
-offset_right = 110.33333
-offset_bottom = 488.0
+[node name="TextureButton5" type="TextureButton" parent="SubViewportContainer/SubViewport/menuRight/menuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
 
-[node name="monsterCore" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/Control2/Control2"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 41.999996
-offset_right = 163.0
-offset_bottom = 202.0
-scale = Vector2(0.6, 0.6)
-value = 35.0
-fill_mode = 3
-texture_under = ExtResource("2_ig75s")
-texture_over = ExtResource("2_6ll6g")
-texture_progress = ExtResource("3_4ed8p")
-
-[node name="ColorRect2" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2/Control2/monsterCore"]
-visible = false
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/menuRight/menuTop/HBoxContainer/TextureButton5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.81960785, 1, 1, 1)
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
 
-[node name="Control" type="Control" parent="SubViewportContainer/SubViewport/Control2/Control2"]
-custom_minimum_size = Vector2(120, 0)
+[node name="TextureButton6" type="TextureButton" parent="SubViewportContainer/SubViewport/menuRight/menuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/menuRight/menuTop/HBoxContainer/TextureButton6"]
 layout_mode = 1
-anchors_preset = 0
-offset_left = -1.333333
-offset_top = -1.6666667
-offset_right = 118.666664
-offset_bottom = 138.33333
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/Control2/Control2/Control"]
+[node name="TextureButton3" type="TextureButton" parent="SubViewportContainer/SubViewport/menuRight/menuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/menuRight/menuTop/HBoxContainer/TextureButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="TextureButton4" type="TextureButton" parent="SubViewportContainer/SubViewport/menuRight/menuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/menuRight/menuTop/HBoxContainer/TextureButton4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="infoPanel" type="Control" parent="SubViewportContainer/SubViewport/menuRight"]
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 36.0
+offset_right = 246.0
+offset_bottom = 214.0
+
+[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/menuRight/infoPanel"]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 178.0
+
+[node name="slimeBars" type="Control" parent="SubViewportContainer/SubViewport/menuRight"]
+anchors_preset = 0
+offset_top = 216.0
+offset_right = 113.33334
+offset_bottom = 360.33334
+
+[node name="statsBars" type="VBoxContainer" parent="SubViewportContainer/SubViewport/menuRight/slimeBars"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.64400005
 anchor_bottom = 0.41900003
-offset_left = 28.000021
-offset_top = 1.6666667
-offset_right = 23.720016
-offset_bottom = 1.6733513
+offset_left = 30.0
+offset_top = -0.333
+offset_right = 31.01332
+offset_bottom = -0.32631683
 theme_override_constants/separation = 0
 
-[node name="slimeSpeedBar" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/Control2/Control2/Control/VBoxContainer"]
+[node name="slimeSpeedBar" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/menuRight/slimeBars/statsBars"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
-fill_mode = 3
+value = 30.0
+texture_under = ExtResource("1_jvmx1")
+texture_progress = ExtResource("2_euikm")
+texture_progress_offset = Vector2(0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2/Control2/Control/VBoxContainer/slimeSpeedBar"]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0.90588236, 0.68235296, 1)
-
-[node name="slimeFrenzyBar" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/Control2/Control2/Control/VBoxContainer"]
+[node name="slimeFrenzyBar" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/menuRight/slimeBars/statsBars"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
-fill_mode = 3
+value = 40.0
+texture_under = ExtResource("1_jvmx1")
+texture_progress = ExtResource("3_p4k5r")
+texture_progress_offset = Vector2(0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2/Control2/Control/VBoxContainer/slimeFrenzyBar"]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.63469666, 0.99920386, 0.6117684, 1)
-
-[node name="slimeMomentumBar" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/Control2/Control2/Control/VBoxContainer"]
+[node name="slimeMomentumBar" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/menuRight/slimeBars/statsBars"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
-fill_mode = 3
+value = 50.0
+texture_under = ExtResource("1_jvmx1")
+texture_progress = ExtResource("4_38nk3")
+texture_progress_offset = Vector2(0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2/Control2/Control/VBoxContainer/slimeMomentumBar"]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.46749705, 0.59505916, 1, 1)
-
-[node name="slimeMomentumBar2" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/Control2/Control2/Control/VBoxContainer"]
+[node name="slimeAutoSeekBar" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/menuRight/slimeBars/statsBars"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
-fill_mode = 3
+value = 60.0
+texture_under = ExtResource("1_jvmx1")
+texture_progress = ExtResource("5_6bi52")
+texture_progress_offset = Vector2(0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2/Control2/Control/VBoxContainer/slimeMomentumBar2"]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.56089723, 0.41611165, 1, 1)
-
-[node name="slimeHealthBar" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/Control2/Control2/Control/VBoxContainer"]
+[node name="slimeHealthBar" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/menuRight/slimeBars/statsBars"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
-fill_mode = 3
+value = 70.0
+texture_under = ExtResource("1_jvmx1")
+texture_progress = ExtResource("6_e8r00")
+texture_progress_offset = Vector2(0, 1)
 
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2/Control2/Control/VBoxContainer/slimeHealthBar"]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0.64640296, 0.5806868, 0.99607843)
-
-[node name="ColorRect2" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2"]
+[node name="monsterCoreBar" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/menuRight/slimeBars"]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 436.0
-offset_right = 400.0
-offset_bottom = 708.0
+offset_left = 3.0
+offset_top = 41.0
+offset_right = 103.0
+offset_bottom = 141.0
+value = 35.0
+fill_mode = 3
+texture_under = ExtResource("7_4wy6o")
+texture_progress = ExtResource("8_blesy")
+
+[node name="nodeViewX" type="ColorRect" parent="SubViewportContainer/SubViewport/menuRight"]
+layout_mode = 0
+offset_left = 104.33331
+offset_top = 216.33334
+offset_right = 243.33331
+offset_bottom = 355.33344
 color = Color(0.21770102, 0.21770105, 0.21770105, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/Control2"]
-layout_mode = 0
-offset_top = 5.0
-offset_right = 230.0
-offset_bottom = 31.0
-theme_override_constants/separation = 6
-
-[node name="TextureButton2" type="TextureButton" parent="SubViewportContainer/SubViewport/Control2/HBoxContainer"]
-custom_minimum_size = Vector2(41, 20)
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2/HBoxContainer/TextureButton2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.14044744, 0.14044744, 0.14044744, 1)
-
-[node name="TextureButton5" type="TextureButton" parent="SubViewportContainer/SubViewport/Control2/HBoxContainer"]
-custom_minimum_size = Vector2(41, 20)
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2/HBoxContainer/TextureButton5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.14044744, 0.14044744, 0.14044744, 1)
-
-[node name="TextureButton6" type="TextureButton" parent="SubViewportContainer/SubViewport/Control2/HBoxContainer"]
-custom_minimum_size = Vector2(41, 20)
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2/HBoxContainer/TextureButton6"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.14044744, 0.14044744, 0.14044744, 1)
-
-[node name="TextureButton3" type="TextureButton" parent="SubViewportContainer/SubViewport/Control2/HBoxContainer"]
-custom_minimum_size = Vector2(41, 20)
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2/HBoxContainer/TextureButton3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.14044744, 0.14044744, 0.14044744, 1)
-
-[node name="TextureButton4" type="TextureButton" parent="SubViewportContainer/SubViewport/Control2/HBoxContainer"]
-custom_minimum_size = Vector2(41, 20)
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Control2/HBoxContainer/TextureButton4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.14044744, 0.14044744, 0.14044744, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+[node name="profileImageX" type="ColorRect" parent="SubViewportContainer/SubViewport"]
 offset_right = 32.0
 offset_bottom = 32.0
 color = Color(0.21770102, 0.21770105, 0.21770105, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="SubViewportContainer/SubViewport/ColorRect4"]
-layout_mode = 0
-offset_left = 120.00001
-offset_top = 5.0
-offset_right = 380.0
-offset_bottom = 10.333333
-color = Color(0.21770102, 0.21770105, 0.21770105, 1)
-
-[node name="ColorRect5" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+[node name="dungeonViewX" type="ColorRect" parent="SubViewportContainer/SubViewport"]
 offset_left = 53.666664
 offset_top = 21.666668
 offset_right = 373.6667
 offset_bottom = 341.6667
 color = Color(0.21770102, 0.21770105, 0.21770105, 1)
 
-[node name="ColorRect5" type="ColorRect" parent="SubViewportContainer/SubViewport/ColorRect5"]
-layout_mode = 0
-offset_left = 442.0
-offset_top = 194.66667
-offset_right = 581.0
-offset_bottom = 333.66675
-color = Color(0.21770102, 0.21770105, 0.21770105, 1)
-
-[node name="ColorRect7" type="ColorRect" parent="SubViewportContainer/SubViewport"]
-offset_left = 8.0
-offset_top = 7.0
-offset_right = 24.0
-offset_bottom = 23.0
-color = Color(0.26667544, 0.21149313, 0.09511366, 1)
-
-[node name="ColorRect6" type="ColorRect" parent="SubViewportContainer/SubViewport"]
-offset_left = 8.0
-offset_top = -4.0
-offset_right = 24.0
-offset_bottom = 12.0
-color = Color(0.31538185, 0.18375477, 0.080451794, 1)
-
-[node name="Control" type="Control" parent="SubViewportContainer/SubViewport"]
-layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = 180.0
-offset_right = 96.0
-offset_bottom = 540.0
-grow_vertical = 2
-
-[node name="SlimeHealth" type="ProgressBar" parent="SubViewportContainer/SubViewport/Control"]
-layout_mode = 0
-offset_left = 176.0
-offset_top = 220.0
-offset_right = 410.0
-offset_bottom = 247.0
-fill_mode = 3
-
-[node name="SpeedBar" type="ProgressBar" parent="SubViewportContainer/SubViewport/Control"]
-layout_mode = 0
-offset_left = 175.0
-offset_top = 294.0
-offset_right = 400.0
-offset_bottom = 321.0
-
-[node name="momentiumBar" type="ProgressBar" parent="SubViewportContainer/SubViewport/Control"]
-layout_mode = 0
-offset_left = 178.0
-offset_top = 257.0
-offset_right = 403.0
-offset_bottom = 284.0
-
-[node name="monsterCore" type="TextureProgressBar" parent="SubViewportContainer/SubViewport/Control"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 269.0
-offset_right = 91.0
-offset_bottom = 355.0
-fill_mode = 3
-texture_under = SubResource("ImageTexture_l20r4")
-
-[node name="ColorRect2" type="ColorRect" parent="SubViewportContainer/SubViewport/Control/monsterCore"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.81960785, 1, 1, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
-texture = ExtResource("4_ig75s")
-offset = Vector2(320, 180)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 161.0
-offset_top = 2.0
-offset_right = 350.0
-offset_bottom = 48.0
-theme_override_font_sizes/font_size = 26
-text = "Room Progress"
+[node name="menuRightHigh" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1174.0
+offset_top = 11.0
+offset_right = 1913.0
+offset_bottom = 1068.0
 
-[node name="Label2" type="Label" parent="CanvasLayer"]
-offset_left = 2094.0
-offset_top = 236.0
-offset_right = 2205.0
-offset_bottom = 294.0
-theme_override_font_sizes/font_size = 42
-text = "Stats"
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/menuRightHigh"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 94.0
+offset_right = 739.0
+offset_bottom = 627.0
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 1387.0
+offset_top = 124.0
+offset_right = 1498.0
+offset_bottom = 182.0
+theme_override_font_sizes/font_size = 28
+text = "Settings"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("4_ig75s")
+offset = Vector2(320, 180)

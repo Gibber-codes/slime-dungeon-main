@@ -20,4 +20,3 @@ momentum_speed_multiplier = 0.5
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("3_fun78")]
-follow_viewport_enabled = false
