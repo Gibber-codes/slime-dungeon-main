@@ -39,10 +39,6 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray()
 
-[global_group]
-
-seekable=""
-
 [input]
 
 ui_pause={
