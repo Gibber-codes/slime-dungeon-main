@@ -4,21 +4,60 @@ Welcome to the Slime Dungeon project documentation! This directory contains comp
 
 **MVP Version:** 1.0 (Ready for Beta Testing)
 **MVP Date:** November 11, 2025
+**Last Updated:** 2025-11-18 (System Design Documentation Complete)
+
+---
+
+## 🎮 Game Concept
+
+**Slime Dungeon** is a physics-based dungeon crawler where a bouncing slime moves **autonomously** through procedurally generated rooms filled with defenders (enemies) and obstacles. The player does **not** directly control the slime; instead, they influence its power and progression via upgrades, NodeSystem stats, and prestige/meta systems.
+
+### Core Gameplay Loop
+1. **Watch the Slime Navigate**: The slime moves and bounces **automatically** using physics.
+2. **Defeat Defenders**: The slime collides with enemies to damage them.
+3. **Clear Room**: When all defenders are defeated, the room is cleared.
+4. **Progress**: Advance to the next room (up to 40).
+5. **Collect Energy**: Gather Monster Energy from defeated enemies.
+6. **Upgrade**: Spend energy on permanent upgrades and NodeSystem stats.
+7. **Reset**: Optional prestige reset for multipliers.
+
+> **Design Note:** Slime Dungeon plays more like a **physics-based incremental/idle game** than a traditional action game.
+
+---
+
+## 🎯 MVP Scope (Version 1.0)
+
+### Included
+- ✅ **6 Tier 1 Nodes**: Wisdom, Strength, Intelligence, Constitution, Stamina, Agility
+- ✅ **Physical Damage Only**: No elemental types yet
+- ✅ **40 Rooms Maximum**: Progressive difficulty
+- ✅ **Active Play Only**: No offline progression
+- ✅ **Collision Combat**: Bouncing into enemies
+- ✅ **Prestige System**: Reset for multipliers
+
+### Balance Targets
+- **First Reset**: ~10-15 minutes (Room 8-12)
+- **Second Reset**: ~8-12 minutes (Room 15-20)
 
 ---
 
 ## 📚 Documentation Index
 
-### [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md)
-High-level overview of the Slime Dungeon project including:
-- Project information and goals
-- **MVP scope and removed features**
-- **Balance targets for MVP**
-- Game concept and core gameplay loop
-- Development status and roadmap
-- Key features and phases
+### 🚀 Start Here
+- **[GAME_DESIGN.md](GAME_DESIGN.md)** - Complete design reference (Systems, Nodes, Physics)
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - System architecture & diagrams
+- **[ROADMAP.md](ROADMAP.md)** - Implementation plan & timeline
+- **[STATUS.md](STATUS.md)** - Current progress tracker
 
-**Start here** if you're new to the project!
+### 🛠️ System Specifications
+- **[Physics System](systems/PHYSICS.md)** - Movement, bouncing, momentum
+- **[Combat System](systems/COMBAT.md)** - Damage formulas, health
+- **[Node System](systems/NODES.md)** - Upgrades, stats, connections
+
+### 📖 Reference
+- **[ENTITIES.md](ENTITIES.md)** - Entity details (Slime, Defender, Obstacle)
+- **[SYSTEMS.md](SYSTEMS.md)** - Manager details (GameManager, RoomManager)
+- **[CODING_STANDARDS.md](CODING_STANDARDS.md)** - Style guide
 
 ---
 

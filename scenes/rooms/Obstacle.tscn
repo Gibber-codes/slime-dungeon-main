@@ -4,21 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://di5rk34iwr713" path="res://assets/sprites/Pot.png" id="2_ukgmm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_euy4v"]
-radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ukgmm"]
-radius = 16.0
 
 [node name="Obstacle" type="StaticBody2D" groups=["seekable"]]
 script = ExtResource("1_0motf")
+bounciness = 0.5
 is_destructible = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_euy4v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -7)
-scale = Vector2(0.025, 0.025)
+position = Vector2(0, -3)
+scale = Vector2(0.014, 0.014)
 texture = ExtResource("2_ukgmm")
 
 [node name="Area2D" type="Area2D" parent="."]

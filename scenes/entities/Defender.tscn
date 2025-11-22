@@ -4,18 +4,20 @@
 [ext_resource type="Script" uid="uid://cv88ssvdcpbop" path="res://scripts/entities/Defender.gd" id="1_eblc1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0l4kg"]
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eblc1"]
-radius = 24.083189
+radius = 12.0
 
 [node name="Defender" type="CharacterBody2D" groups=["seekable"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_eblc1")
+bounciness = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-scale = Vector2(0.019, 0.019)
+position = Vector2(0, -4)
+scale = Vector2(0.01, 0.01)
 texture = ExtResource("1_dr508")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
