@@ -3,14 +3,17 @@
 ## Entity Hierarchy
 
 ```
-BaseEntity (Abstract - CharacterBody2D)
-├── Slime (Player)
-└── Defender (Enemy)
+Slime (CharacterBody2D - Independent)
+└── Player entity with autonomous movement
+    └── Does NOT inherit from BaseEntity
 
-Obstacle (StaticBody2D - separate from BaseEntity)
-├── Barrel
-├── Crate
-└── Other environmental objects
+BaseEntity (Abstract - StaticBody2D)
+├── Defender (Enemy)
+├── Obstacle (Environmental objects)
+│   ├── Barrel
+│   ├── Crate
+│   └── Other environmental objects
+└── Projectile (Future use)
 
 Targeting System: Uses Godot groups
 ├── "seekable" group - Defenders and Obstacles that Slime can auto-seek
@@ -22,41 +25,55 @@ Targeting System: Uses Godot groups
 
 ## BaseEntity (Abstract Base Class)
 
-**Type:** Script only (no scene)  
-**Path:** `scripts/core/BaseEntity.gd`  
-**Node Type:** `extends Node` (currently - should be CharacterBody2D)
+**Type:** Script only (no scene)
+**Path:** `scripts/core/BaseEntity.gd`
+**Node Type:** `extends StaticBody2D`
 
 ### Purpose
-Provides shared functionality for all game entities (Slime and Defender). Handles common stats, damage calculation, and death logic.
+Provides shared functionality for **stationary game entities** (Defender, Obstacle, Projectile). Handles common stats, damage calculation, and death logic. **Note:** Slime does NOT inherit from BaseEntity - it extends CharacterBody2D directly and implements its own health/damage systems.
 
-### Exported Variables (Planned)
+### Exported Variables
 ```gdscript
 @export var max_health: float = 100.0
-@export var current_health: float = 100.0
 @export var physical_damage: float = 10.0
 @export var physical_defense: float = 2.0
-@export var health_regen: float = 0.0
+@export var health_regen: float = 0.0  # HP restored per second
 ```
 
-### Methods (Planned)
+### Internal Variables
+```gdscript
+var current_health: float = 100.0
+```
+
+### Signals
+```gdscript
+signal health_changed(current: float, max_health: float)
+signal died()
+```
+
+### Methods
+- `_ready()` - Initialize health to max
+- `_process(delta: float)` - Handle health regeneration
+- `_process_regen(delta: float)` - Process health regeneration per frame
 - `take_damage(amount: float)` - Apply damage with defense calculation
-- `heal(amount: float)` - Restore health
-- `die()` - Handle entity death
-- `_process_regen(delta: float)` - Handle health regeneration
+- `heal(amount: float)` - Restore health, clamped to max_health
+- `die()` - Handle entity death (can be overridden by child classes)
 
 ### Current Status
-⚠️ **Stub implementation** - Currently empty placeholder
+✅ **Implemented** - Fully functional base class for stationary entities
 
 ---
 
 ## Slime (Player Entity)
 
-**Scene:** `scenes/entities/Slime.tscn`  
-**Script:** `scripts/entities/Slime.gd`  
-**Node Type:** `CharacterBody2D`
+**Scene:** `scenes/entities/Slime.tscn`
+**Script:** `scripts/entities/Slime.gd`
+**Node Type:** `CharacterBody2D` (does NOT inherit from BaseEntity)
 
 ### Purpose
 The player character entity, but **not** directly player-controlled. The Slime moves autonomously using physics-based bouncing and momentum. The player does **not** steer the Slime with keyboard/mouse/gamepad input; instead, they influence its effectiveness indirectly through upgrades, NodeSystem stats, and meta-progression.
+
+**Important:** Slime is completely independent from BaseEntity. It extends CharacterBody2D directly and implements its own health, damage, and combat systems tailored for dynamic movement.
 
 ### Slime Stats (MVP)
 
@@ -181,12 +198,12 @@ The Slime features an **autonomous targeting system** that automatically seeks o
 
 ## Defender (Enemy Entity)
 
-**Scene:** `scenes/entities/Defender.tscn`  
-**Script:** `scripts/entities/Defender.gd`  
-**Node Type:** `CharacterBody2D`
+**Scene:** `scenes/entities/Defender.tscn`
+**Script:** `scripts/entities/Defender.gd`
+**Inherits:** `BaseEntity` (StaticBody2D)
 
 ### Purpose
-Stationary enemy that attacks the player when in range. Emits signals when defeated.
+Stationary enemy that attacks the player when in range. Emits signals when defeated. Inherits health, damage, and defense systems from BaseEntity.
 
 ### Defender Stats (MVP)
 
@@ -230,7 +247,7 @@ signal attacked_player(damage: float)
 
 ### Scene Structure
 ```
-Defender (CharacterBody2D)
+Defender (StaticBody2D - extends BaseEntity)
 ├── Sprite2D
 │   └── texture: res://assets/sprites/Rat_2.png
 │   └── scale: Vector2(0.019, 0.019)
@@ -238,12 +255,12 @@ Defender (CharacterBody2D)
 ├── CollisionShape2D (CircleShape2D) - Physics collision
 ├── AttackRange (Area2D) - Detection zone
 │   └── CollisionShape2D (CircleShape2D)
-└── HealthBar (ProgressBar) - Visual health display
+└── HealthBar (TextureProgressBar) - Visual health display
     └── offset: above sprite
 ```
 
 ### Current Status
-⚠️ **Stub implementation** - Scene exists, script is placeholder
+✅ **Implemented** - Functional stationary enemy with attack range detection
 
 ### Planned Features
 - [ ] Attack range detection
@@ -256,12 +273,12 @@ Defender (CharacterBody2D)
 
 ## Obstacle (Environmental Objects)
 
-**Scenes:** `scenes/obstacles/*.tscn` (planned)
-**Scripts:** `scripts/obstacles/*.gd` (planned)
-**Node Type:** `StaticBody2D` or `RigidBody2D`
+**Scenes:** `scenes/entities/Obstacle.tscn`
+**Scripts:** `scripts/entities/Obstacle.gd` (planned)
+**Inherits:** `BaseEntity` (StaticBody2D)
 
 ### Purpose
-Environmental objects that the slime bounces off of to create interesting physics-based movement patterns. Obstacles are also **seekable targets** for the Slime's auto-seek behavior.
+Environmental objects that the slime bounces off of to create interesting physics-based movement patterns. Obstacles are also **seekable targets** for the Slime's auto-seek behavior. Inherits from BaseEntity for potential destructible obstacles with health systems.
 
 ### Obstacle Types (MVP)
 

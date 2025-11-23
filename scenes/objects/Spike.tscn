@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci2dy7j57xxp8"]
+
+[ext_resource type="Script" uid="uid://bdie2gvoq08l5" path="res://scripts/core/BaseEntity.gd" id="1_base_entity"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spike"]
+size = Vector2(32, 32)
+
+[node name="Spike" type="StaticBody2D"]
+collision_mask = 3
+script = ExtResource("1_base_entity")
+physical_defense = 100.0
+contact_damage = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_spike")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(1, 0, 0, 1)

@@ -35,71 +35,13 @@ The Node System provides the primary progression mechanism through 6 upgradeable
 
 ### Node Tree Diagram
 
-```mermaid
-graph TD
-    subgraph "Tier 1 Nodes - MVP"
-        WIS[Wisdom<br/>Energy Yield]
-        STR[Strength<br/>Damage & Momentum]
-        INT[Intelligence<br/>Auto-Seek & Focus]
-        CON[Constitution<br/>Connections & Health]
-        STA[Stamina<br/>Health Regen]
-        AGI[Agility<br/>Movement Speed]
-    end
-    
-    CON -.->|Connection Slot 1| WIS
-    CON -.->|Connection Slot 2| STR
-    CON -.->|Connection Slot 3| INT
-    
-    style CON fill:#f9f,stroke:#333,stroke-width:4px
-    style WIS fill:#ff9,stroke:#333,stroke-width:2px
-    style STR fill:#f99,stroke:#333,stroke-width:2px
-    style INT fill:#99f,stroke:#333,stroke-width:2px
-    style STA fill:#9f9,stroke:#333,stroke-width:2px
-    style AGI fill:#9ff,stroke:#333,stroke-width:2px
-```
+> [!NOTE]
+> Node Tree Diagram removed.
 
 ### Class Diagram
 
-```mermaid
-classDiagram
-    class NodeSystem {
-        +NodeStat wisdom
-        +NodeStat strength
-        +NodeStat intelligence
-        +NodeStat constitution
-        +NodeStat stamina
-        +NodeStat agility
-        +Array~Connection~ connections
-        +int max_connections
-        +upgrade_node(name)
-        +get_node_level(name)
-        +get_upgrade_cost(name)
-        +can_upgrade(name)
-        +create_connection(from, to)
-        +remove_connection(from, to)
-        +get_stat_bonus(stat)
-        +reset_nodes()
-    }
-    
-    class NodeStat {
-        +String node_name
-        +int current_level
-        +float base_cost
-        +float cost_multiplier
-        +Dictionary effects
-        +get_cost_for_level(level)
-        +get_effect_value(effect_name)
-    }
-    
-    class Connection {
-        +String from_node
-        +String to_node
-        +bool is_active
-    }
-    
-    NodeSystem "1" --> "6" NodeStat
-    NodeSystem "1" --> "0..3" Connection
-```
+> [!NOTE]
+> Class Diagram removed.
 
 ---
 

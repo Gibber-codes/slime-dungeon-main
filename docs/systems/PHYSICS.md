@@ -42,96 +42,13 @@ The Physics System manages the **autonomous movement** of the Slime entity. The 
 
 ### Component Diagram
 
-```mermaid
-classDiagram
-    class Slime {
-        +Vector2 velocity
-        +float momentum
-        +float base_movement_speed
-        +float bounce_force
-        +float bounciness
-        +bool is_seeking
-        +Node2D seek_target
-        +Timer auto_seek_timer
-        +_physics_process(delta)
-        +_handle_bounce(collision)
-        +_update_momentum(delta)
-        +_check_auto_seek()
-        +_seek_nearest_target()
-    }
-    
-    class PhysicsManager {
-        +calculate_bounce_velocity(velocity, normal)
-        +apply_momentum_decay(momentum, delta)
-        +find_nearest_seekable(position)
-        +calculate_seek_direction(from, to)
-    }
-    
-    class AutoSeekSystem {
-        +float base_timer
-        +float current_timer
-        +Array~Node2D~ seekable_targets
-        +reset_timer()
-        +update_timer(delta)
-        +find_target()
-        +is_timer_expired()
-    }
-    
-    class MomentumSystem {
-        +float current_momentum
-        +float max_momentum
-        +float gain_rate
-        +float decay_rate
-        +update(delta, is_moving)
-        +get_damage_bonus()
-        +reset()
-    }
-    
-    Slime --> PhysicsManager
-    Slime --> AutoSeekSystem
-    Slime --> MomentumSystem
-    PhysicsManager ..> Slime : calculates for
-    AutoSeekSystem ..> Slime : controls
-    MomentumSystem ..> Slime : modifies
-```
+> [!NOTE]
+> Component Diagram removed.
 
 ### System Interactions
 
-```mermaid
-flowchart LR
-    subgraph "Input"
-        NS[NodeSystem<br/>Agility/Intelligence]
-        GL[Globals<br/>Physics Config]
-    end
-    
-    subgraph "Physics System"
-        SL[Slime]
-        PM[PhysicsManager]
-        AS[AutoSeek]
-        MS[Momentum]
-    end
-    
-    subgraph "Output"
-        POS[Position Update]
-        VEL[Velocity Change]
-        DMG[Damage Bonus]
-        VFX[Visual Effects]
-    end
-    
-    NS --> SL
-    GL --> PM
-    
-    SL --> PM
-    SL --> AS
-    SL --> MS
-    
-    PM --> VEL
-    AS --> POS
-    MS --> DMG
-    
-    VEL --> VFX
-    DMG --> VFX
-```
+> [!NOTE]
+> System Interactions Diagram removed.
 
 ---
 
@@ -139,42 +56,8 @@ flowchart LR
 
 ### State Machine
 
-```mermaid
-stateDiagram-v2
-    [*] --> Bouncing
-    
-    Bouncing --> Bouncing : Collision occurs
-    Bouncing --> Seeking : Auto-seek timer expires
-    Bouncing --> Idle : Velocity near zero
-    
-    Idle --> Seeking : Auto-seek timer expires
-    Idle --> Bouncing : External force applied
-    
-    Seeking --> Bouncing : Target reached (collision)
-    Seeking --> Seeking : Moving toward target
-    
-    Bouncing --> [*] : Player dies
-    Seeking --> [*] : Player dies
-    Idle --> [*] : Player dies
-    
-    note right of Bouncing
-        Normal physics-based movement
-        Momentum builds up
-        Bounces off surfaces
-    end note
-    
-    note right of Seeking
-        Direct movement to target
-        Slower speed (auto_seek_speed)
-        Ignores normal physics
-    end note
-    
-    note right of Idle
-        Velocity very low
-        Momentum decays
-        Waiting for auto-seek
-    end note
-```
+> [!NOTE]
+> State Machine Diagram removed.
 
 ### State Transitions
 
@@ -193,19 +76,8 @@ stateDiagram-v2
 
 ### Bounce Calculation
 
-```mermaid
-flowchart TD
-    Start[Collision Detected] --> GetNormal[Get Collision Normal]
-    GetNormal --> Reflect[Reflect Velocity<br/>v' = v - 2(v·n)n]
-    Reflect --> ApplyBounciness[Apply Bounciness<br/>v' *= bounciness]
-    ApplyBounciness --> CheckMin{Velocity ><br/>Min Threshold?}
-    CheckMin -->|Yes| ApplyVelocity[Set New Velocity]
-    CheckMin -->|No| Stop[Stop Movement]
-    ApplyVelocity --> ResetTimer[Reset Auto-Seek Timer]
-    ResetTimer --> UpdateMomentum[Update Momentum]
-    UpdateMomentum --> End[Continue Physics]
-    Stop --> End
-```
+> [!NOTE]
+> Bounce Calculation Diagram removed.
 
 ### Bounce Formula
 
@@ -248,27 +120,8 @@ Where:
 
 ### Momentum Mechanics
 
-```mermaid
-flowchart TD
-    subgraph "Momentum Gain"
-        Moving{Is Moving?}
-        Moving -->|Yes| Gain[momentum += gain_rate * delta]
-        Moving -->|No| Decay[momentum -= decay_rate * delta]
-        Gain --> Clamp[Clamp to max_momentum]
-        Decay --> ClampMin[Clamp to 0]
-    end
-    
-    subgraph "Momentum Effects"
-        Clamp --> DamageBonus[Damage Bonus<br/>+momentum * multiplier]
-        Clamp --> SpeedBonus[Speed Bonus<br/>+momentum * speed_mult]
-        Clamp --> Visual[Visual Trail<br/>Intensity]
-    end
-    
-    subgraph "Momentum Reset"
-        ClampMin --> Check{momentum == 0?}
-        Check -->|Yes| Idle[Enter Idle State]
-    end
-```
+> [!NOTE]
+> Momentum Mechanics Diagram removed.
 
 ### Momentum Formulas
 
@@ -318,43 +171,8 @@ Where:
 
 ### Auto-Seek Flow
 
-```mermaid
-sequenceDiagram
-    participant T as Timer
-    participant S as Slime
-    participant PM as PhysicsManager
-    participant TG as Targets
-
-    Note over T: Timer counting down
-    T->>T: current_timer -= delta
-
-    alt Timer Expired
-        T->>S: timer_expired()
-        S->>PM: find_nearest_seekable()
-        PM->>TG: get_nodes_in_group("seekable")
-        TG-->>PM: Array of targets
-        PM->>PM: calculate_nearest(slime_pos)
-        PM-->>S: nearest_target
-
-        alt Target Found
-            S->>S: is_seeking = true
-            S->>S: seek_target = target
-            Note over S: Enter Seeking state
-
-            loop Every Frame
-                S->>PM: calculate_seek_direction()
-                PM-->>S: direction vector
-                S->>S: velocity = direction * auto_seek_speed
-                S->>S: move_and_slide()
-            end
-
-            S->>S: Collision with target
-            S->>T: reset_timer()
-            S->>S: is_seeking = false
-            Note over S: Return to Bouncing state
-        end
-    end
-```
+> [!NOTE]
+> Auto-Seek Flow Diagram removed.
 
 ### Seekable Targets
 

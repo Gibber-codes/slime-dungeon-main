@@ -9,12 +9,12 @@ This document tracks the implementation status of all major features and systems
 ## 🎯 Recent Update (2025-11-18)
 
 **Major Documentation Milestone Achieved:**
-- ✅ Created comprehensive architecture overview with Mermaid diagrams
+- ✅ Created comprehensive architecture overview
 - ✅ Created detailed physics system design with step-by-step implementation
 - ✅ Created combat system design with damage formulas
 - ✅ Created node system design with all 6 nodes documented
 - ✅ Created complete implementation roadmap with time estimates
-- ✅ All system designs include Mermaid diagrams for visualization
+- ✅ All system designs include detailed descriptions for visualization
 - ✅ Clear file structure and integration points documented
 
 **Next Steps:** Begin Phase 1 implementation (Foundation systems)
@@ -64,7 +64,7 @@ This document tracks the implementation status of all major features and systems
 | Movement | 🔄 Needs Refactor | Currently platformer-style, needs bouncing physics |
 | Bouncing Physics | ❌ Not Started | Core mechanic not implemented |
 | Collision Damage | ❌ Not Started | No combat system yet |
-| Health System | ❌ Not Started | Needs BaseEntity implementation |
+| Health System | ✅ Complete | Implemented independently (Slime does not use BaseEntity) |
 | Auto-Seek/Focus Mode | ❌ Not Started | Planned feature |
 | Momentum Trail | ⚠️ Partial | Line2D node exists, no logic |
 | Focus Indicator | ⚠️ Partial | Sprite2D node exists, no logic |
@@ -77,7 +77,7 @@ This document tracks the implementation status of all major features and systems
 | Basic Scene | ✅ Complete | CharacterBody2D with sprite and collision |
 | Attack Range | ⚠️ Partial | Area2D exists, no detection logic |
 | Attack Logic | ❌ Not Started | No damage dealing |
-| Health System | ❌ Not Started | Needs BaseEntity implementation |
+| Health System | ✅ Complete | Inherits from BaseEntity |
 | Health Bar | ⚠️ Partial | ProgressBar exists, not connected |
 | Death Logic | ❌ Not Started | No defeat signal |
 | AI Behavior | ❌ Not Started | Currently stationary |
@@ -87,11 +87,14 @@ This document tracks the implementation status of all major features and systems
 
 | Feature | Status | Notes |
 |---------|--------|-------|
-| Script File | ⚠️ Partial | Created as abstract base class, extends CharacterBody2D |
-| Health System | ❌ Not Started | Planned: max_health, current_health |
-| Damage System | ❌ Not Started | Planned: take_damage(), defense |
-| Regen System | ❌ Not Started | Planned: health_regen |
-| Death Logic | ❌ Not Started | Planned: die() method |
+| Script File | ✅ Complete | Abstract base class, extends StaticBody2D |
+| Health System | ✅ Complete | max_health, current_health implemented |
+| Damage System | ✅ Complete | take_damage() with physical_defense |
+| Regen System | ✅ Complete | health_regen per second in _process() |
+| Death Logic | ✅ Complete | die() method (overridable by child classes) |
+| Signals | ✅ Complete | health_changed, died signals |
+
+**Note:** BaseEntity now extends StaticBody2D for stationary entities (Defender, Obstacle, Projectile). Slime is independent and extends CharacterBody2D directly.
 
 ### Obstacle
 
@@ -147,8 +150,8 @@ This document tracks the implementation status of all major features and systems
 |---------|--------|-------|
 | Collision Detection | ❌ Not Started | No collision handling |
 | Damage Calculation | ❌ Not Started | No formula implemented |
-| Defense System | ❌ Not Started | Planned in BaseEntity |
-| Health Regen | ❌ Not Started | Planned in BaseEntity |
+| Defense System | ✅ Complete | Implemented in BaseEntity (physical_defense) |
+| Health Regen | ✅ Complete | Implemented in BaseEntity (health_regen) |
 | Death Handling | ❌ Not Started | No death logic |
 | Combat Feedback | ❌ Not Started | No visual/audio feedback |
 
@@ -256,7 +259,7 @@ This document tracks the implementation status of all major features and systems
 | SYSTEMS.md | ✅ Complete | Created 2025-11-13 |
 | CODING_STANDARDS.md | ✅ Complete | Created 2025-11-13 |
 | IMPLEMENTATION_STATUS.md | ✅ Complete | This file |
-| **ARCHITECTURE.md** | ✅ Complete | Created 2025-11-18 with Mermaid diagrams |
+| **ARCHITECTURE.md** | ✅ Complete | Created 2025-11-18 |
 | **systems/PHYSICS.md** | ✅ Complete | Created 2025-11-18 with implementation steps |
 | **systems/COMBAT.md** | ⚠️ Partial | Created 2025-11-18, needs completion |
 | **systems/NODES.md** | ⚠️ Partial | Created 2025-11-18, needs completion |
@@ -291,7 +294,7 @@ The following features are explicitly **out of scope** for MVP 1.0 and will be c
 ### Phase 1: Core Mechanics (MVP)
 1. ✅ Project structure and documentation
 2. ✅ Create core scene structures (GameManager, NodeSystem, MonsterEnergy, Globals)
-3. ❌ Implement BaseEntity with health/damage system
+3. ✅ Implement BaseEntity with health/damage system
 4. ❌ Implement Slime bouncing physics
 5. ❌ Implement Defender attack logic
 6. ❌ Connect UI elements (health bar, counters)
@@ -338,9 +341,12 @@ The following features are explicitly **out of scope** for MVP 1.0 and will be c
 ### Phase 2: Entity Structures
 - ✅ Created `scenes/entities/Projectile.tscn` - Basic Area2D structure for future use
 - ✅ Created `scenes/entities/Obstacle.tscn` - Basic StaticBody2D structure
-- ✅ Updated `scripts/core/BaseEntity.gd` - Now extends CharacterBody2D as abstract base class
+- ✅ Updated `scripts/core/BaseEntity.gd` - Now extends StaticBody2D as abstract base class for stationary entities
 - ✅ Created `scripts/entities/Obstacle.gd` - Obstacle script
 - ✅ Created `scripts/entities/Projectile.gd` - Projectile script
+- ✅ Implemented BaseEntity with full health/damage/regen system
+- ✅ Slime refactored to extend CharacterBody2D independently (does NOT inherit from BaseEntity)
+- ✅ Defender extends BaseEntity for health/damage functionality
 
 ### Phase 3: Room Structures
 - ✅ Created `scenes/rooms/Room_01.tscn` - Template room

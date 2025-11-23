@@ -19,55 +19,8 @@
 
 ### Dependency Graph
 
-```mermaid
-graph TD
-    subgraph "Phase 1: Foundation"
-        P1_1[BaseEntity System]
-        P1_2[Globals Configuration]
-        P1_3[SignalBus Setup]
-    end
-    
-    subgraph "Phase 2: Core Gameplay"
-        P2_1[Physics System]
-        P2_2[Combat System]
-        P2_3[Room System]
-        P2_4[Basic UI]
-    end
-    
-    subgraph "Phase 3: Progression"
-        P3_1[MonsterEnergy]
-        P3_2[NodeSystem]
-        P3_3[RoomManager]
-        P3_4[Prestige System]
-    end
-    
-    subgraph "Phase 4: Polish"
-        P4_1[Visual Effects]
-        P4_2[Audio]
-        P4_3[Balance Tuning]
-        P4_4[Save/Load]
-    end
-    
-    P1_1 --> P2_1
-    P1_1 --> P2_2
-    P1_2 --> P2_1
-    P1_3 --> P2_2
-    
-    P2_1 --> P2_2
-    P2_2 --> P2_3
-    P2_3 --> P2_4
-    
-    P2_2 --> P3_1
-    P3_1 --> P3_2
-    P2_3 --> P3_3
-    P3_2 --> P3_4
-    P3_3 --> P3_4
-    
-    P3_4 --> P4_1
-    P3_4 --> P4_2
-    P3_4 --> P4_3
-    P4_3 --> P4_4
-```
+> [!NOTE]
+> Dependency graph removed. See text description below.
 
 ### Priority Levels
 

@@ -19,14 +19,17 @@ script = ExtResource("1_script")
 position = Vector2(160, 160)
 
 [node name="Slime" parent="." instance=ExtResource("2_ilat6")]
+position = Vector2(145, 84)
+max_momentum = 200.0
 momentum_gain_rate = 5.0
 momentum_speed_multiplier = 0.5
-base_physical_damage = 20.0
-bounciness = 0.97
+base_max_health = 50.0
+bounciness = 0.99
 
 [node name="GameCamera" type="Camera2D" parent="."]
 position = Vector2(160, 160)
-zoom = Vector2(2.135, 2.135)
+offset = Vector2(0, -0.22)
+zoom = Vector2(1.995, 1.995)
 
 [node name="CameraTarget" type="Marker2D" parent="."]
 

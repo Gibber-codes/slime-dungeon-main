@@ -42,89 +42,13 @@ The Combat System manages all damage calculation, health management, and combat 
 
 ### Component Diagram
 
-```mermaid
-classDiagram
-    class BaseEntity {
-        <<abstract>>
-        +float max_health
-        +float current_health
-        +float physical_damage
-        +float physical_defense
-        +float health_regen
-        +take_damage(amount)
-        +heal(amount)
-        +die()
-        +_process_regen(delta)
-        #signal health_changed
-        #signal died
-    }
-    
-    class Slime {
-        +float momentum
-        +get_total_damage()
-        +get_momentum_bonus()
-        +_on_collision_with_enemy()
-    }
-    
-    class Defender {
-        +float attack_range
-        +float attack_cooldown
-        +Timer attack_timer
-        +Area2D attack_zone
-        +_on_player_entered_range()
-        +_attack_player()
-        +die()
-        #signal defeated
-    }
-    
-    class CombatManager {
-        +calculate_damage(attacker, defender)
-        +apply_damage(target, amount)
-        +resolve_collision(slime, defender)
-        +calculate_energy_reward(defender)
-    }
-    
-    BaseEntity <|-- Slime
-    BaseEntity <|-- Defender
-    CombatManager ..> Slime : calculates for
-    CombatManager ..> Defender : calculates for
-    Slime --> CombatManager : requests calculation
-    Defender --> CombatManager : requests calculation
-```
+> [!NOTE]
+> Component Diagram removed.
 
 ### System Interactions
 
-```mermaid
-flowchart LR
-    subgraph "Entities"
-        SL[Slime]
-        DF[Defender]
-    end
-    
-    subgraph "Combat System"
-        CM[CombatManager]
-        BE[BaseEntity]
-    end
-    
-    subgraph "External Systems"
-        NS[NodeSystem<br/>Stat Bonuses]
-        ME[MonsterEnergy<br/>Rewards]
-        SB[SignalBus<br/>Events]
-    end
-    
-    SL --> CM
-    DF --> CM
-    
-    CM --> BE
-    BE --> SL
-    BE --> DF
-    
-    NS --> SL
-    NS --> DF
-    
-    CM --> ME
-    CM --> SB
-```
+> [!NOTE]
+> System Interactions Diagram removed.
 
 ---
 
@@ -132,18 +56,8 @@ flowchart LR
 
 ### Slime Damage Formula
 
-```mermaid
-flowchart TD
-    Start[Collision with Defender] --> GetBase[Get Base Damage]
-    GetBase --> GetNode[Get Node Bonuses<br/>Strength]
-    GetNode --> GetMomentum[Get Momentum Bonus]
-    GetMomentum --> GetPrestige[Get Prestige Multiplier]
-    GetPrestige --> CalcTotal[Total Damage =<br/>base + node + momentum]
-    CalcTotal --> ApplyMult[Apply Prestige<br/>total *= multiplier]
-    ApplyMult --> GetDefense[Get Defender Defense]
-    GetDefense --> CalcFinal[Final Damage =<br/>max(total - defense, 1)]
-    CalcFinal --> Apply[Apply to Defender]
-```
+> [!NOTE]
+> Slime Damage Formula Diagram removed.
 
 ### Damage Formula
 
@@ -220,30 +134,7 @@ func calculate_defender_damage(defender: Defender, slime: Slime, room_number: in
 
 ### Health Management
 
-```mermaid
-stateDiagram-v2
-    [*] --> Alive
-    
-    Alive --> Damaged : take_damage()
-    Damaged --> Alive : health > 0
-    Damaged --> Dead : health <= 0
-    
-    Alive --> Healing : heal() or regen
-    Healing --> Alive : health < max_health
-    
-    Dead --> [*]
-    
-    note right of Alive
-        current_health > 0
-        Can take damage
-        Can regenerate
-    end note
-    
-    note right of Dead
-        current_health = 0
-        Emit died signal
-        Remove from scene
-    end note
-```
+> [!NOTE]
+> Health Management Diagram removed.
 
 

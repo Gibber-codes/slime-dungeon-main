@@ -1,6 +1,8 @@
-extends BaseEntity
+extends CharacterBody2D
 
 ## Signals
+signal health_changed(current: float, max_health: float)
+signal died()
 signal enemy_defeated(enemy: Node2D)
 signal monster_energy_gained(amount: float)
 
@@ -17,7 +19,6 @@ var momentum: float = 0.0  # Current momentum value (0 to max_momentum)
 @export var base_physical_damage: float = 10.0
 @export var base_physical_defense: float = 2.0
 @export var base_max_health: float = 100.0
-@export var base_movement_speed: float = 300.0
 @export var bounce_force: float = 300.0
 @export var bounciness: float = 0.8  # Default bounciness when collided object has no bounciness property
 @export var momentum_damage_multiplier: float = 0.1
@@ -26,20 +27,27 @@ var momentum: float = 0.0  # Current momentum value (0 to max_momentum)
 @export var min_auto_seek_timer: float = 1.0  # Minimum timer duration
 @export var focus_mode_enabled: bool = false
 
+## Health System Variables (formerly inherited)
+var max_health: float = 100.0
+var current_health: float = 100.0
+var physical_damage: float = 10.0
+var physical_defense: float = 2.0
+var health_regen: float = 0.0
+
 ## Auto-seek internal variables
 var current_seek_timer: float = 0.0  # Current countdown timer
 var is_seeking: bool = false  # Whether currently in auto-seek mode
 var seek_target: Node2D = null  # Current seek target
 
 func _ready() -> void:
-	# Call parent _ready to initialize health system
-	super._ready()
-
 	# Initialize slime stats from base variables
 	max_health = base_max_health
 	current_health = max_health
 	physical_damage = base_physical_damage
 	physical_defense = base_physical_defense
+	
+	# Emit initial health signal
+	health_changed.emit(current_health, max_health)
 
 	# Initialize momentum system
 	momentum = 0.0
@@ -54,6 +62,9 @@ func _ready() -> void:
 	_initialize_random_velocity()
 
 func _physics_process(delta: float) -> void:
+	# Update z_index based on Y position for depth sorting
+	z_index = int(position.y)
+
 	# Update auto-seek timer
 	_update_seek_timer(delta)
 
@@ -107,6 +118,14 @@ func _handle_collision_damage(collision: KinematicCollision2D) -> void:
 
 		# Deal damage to the enemy
 		collider.take_damage(total_damage)
+	
+	# Check if the collider deals contact damage (e.g., spikes)
+	if collider and "contact_damage" in collider and collider.contact_damage > 0:
+		take_damage(collider.contact_damage)
+	
+	# Notify the collider that it was hit (if it inherits BaseEntity)
+	if collider and collider.has_method("_on_collision"):
+		collider._on_collision(self)
 
 func _handle_bounce(collision: KinematicCollision2D) -> void:
 	"""Handle physics bounce off surfaces using the collided object's bounciness"""
@@ -218,5 +237,32 @@ func _seek_target(delta: float) -> void:
 			# Hit a wall or non-seekable object, bounce but continue seeking
 			_handle_bounce(collision)
 
+func _process(delta: float) -> void:
+	# Handle health regeneration
+	if health_regen > 0.0 and current_health < max_health:
+		var regen_amount: float = health_regen * delta
+		heal(regen_amount)
+	# Update z-index based on Y position
+	z_index = int(global_position.y)
 
+func take_damage(amount: float) -> void:
+	"""Apply damage with defense calculation"""
+	# Calculate damage after defense
+	var actual_damage: float = max(0.0, amount - physical_defense)
 
+	# Apply damage
+	current_health = max(0.0, current_health - actual_damage)
+	health_changed.emit(current_health, max_health)
+
+	# Check for death
+	if current_health <= 0.0:
+		die()
+
+func heal(amount: float) -> void:
+	"""Restore health, clamped to max_health"""
+	current_health = min(max_health, current_health + amount)
+	health_changed.emit(current_health, max_health)
+
+func die() -> void:
+	"""Handle entity death"""
+	died.emit()

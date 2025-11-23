@@ -14,6 +14,14 @@ func _ready() -> void:
 			slime.health_changed.connect(_on_health_changed)
 			# Initialize health bar
 			_on_health_changed(slime.current_health, slime.max_health)
+		
+		# Connect died signal
+		if slime.has_signal("died"):
+			slime.died.connect(_on_slime_died)
+
+func _on_slime_died() -> void:
+	"""Reload the scene when slime dies"""
+	get_tree().reload_current_scene()
 
 func _process(_delta: float) -> void:
 	if is_instance_valid(slime):

@@ -15,19 +15,21 @@ collision_mask = 5
 floor_stop_on_slope = false
 floor_max_angle = 0.0
 script = ExtResource("1_q3i8h")
-momentum_gain_rate = 150.0
+momentum_gain_rate = 200.0
 momentum_speed_multiplier = 2.0
 bounciness = 0.9
-max_health = 200.0
+momentum_damage_multiplier = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_ihga3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_7xh0k")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_sti83")

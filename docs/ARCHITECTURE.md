@@ -19,70 +19,8 @@
 
 ### High-Level Component Diagram
 
-```mermaid
-graph TB
-    subgraph "Autoload Singletons"
-        GM[GameManager<br/>Game State & Prestige]
-        NS[NodeSystem<br/>Upgrades & Stats]
-        ME[MonsterEnergy<br/>Currency]
-        SB[SignalBus<br/>Event Communication]
-        GL[Globals<br/>Configuration]
-    end
-    
-    subgraph "Core Systems"
-        RM[RoomManager<br/>Room Progression]
-        CM[CombatManager<br/>Damage Calculation]
-        PM[PhysicsManager<br/>Bounce Physics]
-    end
-    
-    subgraph "Entities"
-        SL[Slime<br/>Player Entity]
-        DF[Defender<br/>Enemy Entity]
-        OB[Obstacle<br/>Environment]
-    end
-    
-    subgraph "Rooms"
-        R1[Room_01]
-        R2[Room_02]
-        RN[Room_N<br/>40 total]
-    end
-    
-    subgraph "UI Layer"
-        HUD[HUD<br/>Health/Energy/Room]
-        UM[UpgradeMenu<br/>Node Upgrades]
-        RS[ResetScreen<br/>Prestige]
-        PM_UI[PauseMenu]
-    end
-    
-    GM --> RM
-    GM --> NS
-    GM --> ME
-    GM --> SB
-    
-    NS --> SL
-    ME --> UM
-    
-    RM --> R1
-    RM --> R2
-    RM --> RN
-    
-    R1 --> DF
-    R1 --> OB
-    
-    SL --> CM
-    DF --> CM
-    
-    CM --> ME
-    CM --> SB
-    
-    SB --> HUD
-    SB --> UM
-    SB --> RS
-    
-    GL -.-> GM
-    GL -.-> NS
-    GL -.-> ME
-```
+> [!NOTE]
+> High-Level Component Diagram removed.
 
 ### Component Responsibilities
 
@@ -108,61 +46,8 @@ graph TB
 
 ### Singleton Architecture
 
-```mermaid
-classDiagram
-    class GameManager {
-        +GameState game_state
-        +float reset_multiplier
-        +int total_resets
-        +float lifetime_energy
-        +reset_game()
-        +calculate_reset_multiplier()
-        +save_game()
-        +load_game()
-    }
-    
-    class NodeSystem {
-        +NodeStat wisdom
-        +NodeStat strength
-        +NodeStat intelligence
-        +NodeStat constitution
-        +NodeStat stamina
-        +NodeStat agility
-        +Array connections
-        +upgrade_node(name)
-        +get_stat_bonus(stat)
-        +create_connection()
-    }
-    
-    class MonsterEnergy {
-        +float total_energy
-        +float lifetime_energy
-        +add_energy(amount)
-        +spend_energy(cost)
-        +can_afford(cost)
-    }
-    
-    class SignalBus {
-        +signal room_cleared
-        +signal enemy_defeated
-        +signal node_upgraded
-        +signal energy_changed
-        +signal game_reset
-    }
-    
-    class Globals {
-        +enum GameState
-        +enum NodeType
-        +Dictionary config
-        +get_config(key)
-    }
-    
-    GameManager --> NodeSystem
-    GameManager --> MonsterEnergy
-    GameManager --> SignalBus
-    NodeSystem --> SignalBus
-    MonsterEnergy --> SignalBus
-```
+> [!NOTE]
+> Singleton Architecture Diagram removed.
 
 ### Autoload Configuration
 
@@ -242,114 +127,18 @@ Obstacle.tscn
 
 ### Game Loop Data Flow
 
-```mermaid
-flowchart TD
-    Start[Game Start] --> Init[Initialize Systems]
-    Init --> LoadRoom[Load Room 1]
-    LoadRoom --> SpawnEnemies[Spawn Defenders]
-    SpawnEnemies --> GameLoop{Game Loop}
-
-    GameLoop --> Physics[Physics Process]
-    Physics --> Collision{Collision?}
-
-    Collision -->|Yes| Combat[Combat Resolution]
-    Collision -->|No| GameLoop
-
-    Combat --> Damage[Calculate Damage]
-    Damage --> Health{Enemy Dead?}
-
-    Health -->|Yes| Reward[Award Energy]
-    Health -->|No| GameLoop
-
-    Reward --> CheckRoom{All Enemies<br/>Defeated?}
-    CheckRoom -->|No| GameLoop
-    CheckRoom -->|Yes| RoomClear[Room Cleared]
-
-    RoomClear --> CheckProgress{Room 40<br/>Cleared?}
-    CheckProgress -->|No| NextRoom[Load Next Room]
-    CheckProgress -->|Yes| Victory[Victory Screen]
-
-    NextRoom --> SpawnEnemies
-
-    GameLoop --> PlayerDead{Player Dead?}
-    PlayerDead -->|Yes| GameOver[Game Over]
-    PlayerDead -->|No| GameLoop
-
-    GameOver --> Reset{Reset?}
-    Victory --> Reset
-    Reset -->|Yes| Prestige[Calculate Prestige]
-    Reset -->|No| End[End]
-
-    Prestige --> Init
-```
+> [!NOTE]
+> Game Loop Data Flow Diagram removed.
 
 ### Energy Flow
 
-```mermaid
-flowchart LR
-    subgraph "Collection"
-        Enemy[Defeat Enemy] --> Base[Base Energy]
-        Base --> Wisdom[Apply Wisdom<br/>Multiplier]
-        Wisdom --> Prestige[Apply Prestige<br/>Multiplier]
-    end
-
-    subgraph "Storage"
-        Prestige --> ME[MonsterEnergy<br/>total_energy]
-        ME --> Lifetime[lifetime_energy]
-    end
-
-    subgraph "Spending"
-        ME --> Upgrade[Node Upgrade]
-        Upgrade --> Cost[Deduct Cost]
-        Cost --> ME
-    end
-
-    subgraph "UI"
-        ME --> Display[Update HUD]
-        Upgrade --> Refresh[Refresh Menu]
-    end
-```
+> [!NOTE]
+> Energy Flow Diagram removed.
 
 ### Stat Calculation Flow
 
-```mermaid
-flowchart TD
-    subgraph "Base Stats"
-        BS[Base Stats<br/>Defined in Slime]
-    end
-
-    subgraph "Node Bonuses"
-        Str[Strength<br/>+Damage +Momentum]
-        Con[Constitution<br/>+Health]
-        Sta[Stamina<br/>+Regen]
-        Agi[Agility<br/>+Speed]
-        Int[Intelligence<br/>-Seek Timer]
-        Wis[Wisdom<br/>+Energy Yield]
-    end
-
-    subgraph "Prestige Multiplier"
-        PM[Prestige Multiplier<br/>Applies to all stats]
-    end
-
-    subgraph "Final Stats"
-        FS[Effective Stats<br/>Used in gameplay]
-    end
-
-    BS --> Calc[Calculate Total]
-    Str --> Calc
-    Con --> Calc
-    Sta --> Calc
-    Agi --> Calc
-    Int --> Calc
-    Wis --> Calc
-
-    Calc --> PM
-    PM --> FS
-
-    FS --> Slime[Apply to Slime]
-    FS --> Combat[Use in Combat]
-    FS --> UI[Display in UI]
-```
+> [!NOTE]
+> Stat Calculation Flow Diagram removed.
 
 ---
 
@@ -357,37 +146,8 @@ flowchart TD
 
 ### Signal Architecture
 
-```mermaid
-sequenceDiagram
-    participant S as Slime
-    participant D as Defender
-    participant CM as CombatManager
-    participant SB as SignalBus
-    participant ME as MonsterEnergy
-    participant R as Room
-    participant RM as RoomManager
-    participant UI as UI
-
-    S->>D: Collision
-    D->>CM: calculate_damage()
-    CM->>D: take_damage()
-    D->>D: health -= damage
-
-    alt Enemy Defeated
-        D->>SB: enemy_defeated
-        SB->>ME: add_energy()
-        ME->>SB: energy_changed
-        SB->>UI: update_energy_display()
-        SB->>R: check_room_clear()
-
-        alt All Enemies Defeated
-            R->>SB: room_cleared
-            SB->>RM: load_next_room()
-            RM->>SB: room_loaded
-            SB->>UI: update_room_counter()
-        end
-    end
-```
+> [!NOTE]
+> Signal Architecture Diagram removed.
 
 ### Key Signals
 
@@ -427,61 +187,8 @@ signal victory()
 
 ### System Dependencies
 
-```mermaid
-graph LR
-    subgraph "Independent Systems"
-        GL[Globals]
-        SB[SignalBus]
-    end
-
-    subgraph "Core Systems"
-        GM[GameManager]
-        ME[MonsterEnergy]
-        NS[NodeSystem]
-    end
-
-    subgraph "Gameplay Systems"
-        RM[RoomManager]
-        CM[CombatManager]
-        PM[PhysicsManager]
-    end
-
-    subgraph "Entities"
-        SL[Slime]
-        DF[Defender]
-    end
-
-    subgraph "UI"
-        HUD[HUD]
-        UM[UpgradeMenu]
-    end
-
-    GL --> GM
-    GL --> NS
-    GL --> ME
-
-    SB --> GM
-    SB --> RM
-    SB --> CM
-    SB --> HUD
-    SB --> UM
-
-    GM --> ME
-    GM --> NS
-    GM --> RM
-
-    NS --> SL
-    ME --> UM
-
-    RM --> SL
-    RM --> DF
-
-    CM --> SL
-    CM --> DF
-    CM --> ME
-
-    SL --> PM
-```
+> [!NOTE]
+> System Dependencies Diagram removed.
 
 ### Critical Integration Points
 

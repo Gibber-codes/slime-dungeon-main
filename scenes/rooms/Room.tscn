@@ -1,108 +1,62 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxld6p7bttxv8"]
+[gd_scene load_steps=8 format=4 uid="uid://dxld6p7bttxv8"]
 
 [ext_resource type="Script" uid="uid://cmjjacbuytey5" path="res://scripts/systems/Room.gd" id="1_iaoa5"]
-[ext_resource type="Texture2D" uid="uid://dlq50psvdtvy8" path="res://assets/tilesets/dungeon_tiles_middle.png" id="2_yvx7d"]
-[ext_resource type="Texture2D" uid="uid://bwfxi01jsxt7w" path="res://assets/tilesets/dungeon_tiles_edge.png" id="3_vvy2w"]
-[ext_resource type="Texture2D" uid="uid://cjvaj4xsagw0r" path="res://assets/tilesets/dungeon_tiles_corner.png" id="4_3n8xs"]
-[ext_resource type="Texture2D" uid="uid://cxgvhgg0mspor" path="res://assets/tilesets/dungeon_tiles.png" id="5_vvy2w"]
+[ext_resource type="TileSet" uid="uid://ur3s2gpmtc6u" path="res://assets/tilesets/Dungeon.tres" id="2_vvy2w"]
+[ext_resource type="PackedScene" uid="uid://iwgt8eff6ktc" path="res://scenes/objects/Vase.tscn" id="6_1o45p"]
 [ext_resource type="PackedScene" uid="uid://bm6irlx0ukdwi" path="res://scenes/entities/Defender.tscn" id="6_3n8xs"]
-[ext_resource type="PackedScene" uid="uid://d1a2b3c4e5f6j" path="res://scenes/rooms/Obstacle.tscn" id="7_1o45p"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1o45p"]
-texture = ExtResource("2_yvx7d")
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h8v3a"]
-texture = ExtResource("3_vvy2w")
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvxix"]
-texture = ExtResource("4_3n8xs")
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3n8xs"]
-texture = ExtResource("5_vvy2w")
-margins = Vector2i(11, 12)
-texture_region_size = Vector2i(32, 32)
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:3/0 = 0
-3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-0:1/0 = 0
-0:2/0 = 0
-0:3/0 = 0
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3n8xs"]
-scenes/1/scene = ExtResource("6_3n8xs")
-scenes/2/scene = ExtResource("7_1o45p")
-
-[sub_resource type="TileSet" id="TileSet_iaoa5"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_1o45p")
-sources/1 = SubResource("TileSetAtlasSource_h8v3a")
-sources/2 = SubResource("TileSetAtlasSource_rvxix")
-sources/3 = SubResource("TileSetAtlasSource_3n8xs")
-sources/4 = SubResource("TileSetScenesCollectionSource_3n8xs")
+[ext_resource type="PackedScene" uid="uid://d1a2b3c4e5f6j" path="res://scenes/objects/Pot.tscn" id="7_1o45p"]
+[ext_resource type="PackedScene" uid="uid://dgfik7xhu8k8s" path="res://scenes/objects/Pillar.tscn" id="8_h8v3a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pnwq"]
 size = Vector2(20, 16)
 
 [node name="Room" type="Node2D"]
-z_index = -1
+y_sort_enabled = true
 script = ExtResource("1_iaoa5")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="dungeonRoom" type="TileMapLayer" parent="."]
+z_index = -1
 position = Vector2(16, -16)
-tile_set = SubResource("TileSet_iaoa5")
-format = 2
-layer_0/tile_data = PackedInt32Array(-262144, 65539, 2, -327680, 196611, 1610612738, -65536, 65539, 1, -131072, 65539, 2, -196608, 65539, 2, 0, 65539, 1, 65536, 65539, 2, 131072, 65539, 1, 196608, 65539, 1, 262144, 65539, 1, 327680, 196611, 1342177282, 393215, 196611, 1342177282, 327679, 65539, 1, 262143, 65539, 2, 196607, 65539, 1, 131071, 65539, 2, 65535, 65539, 1, 65534, 65539, 2, -2, 65539, 2, -65538, 65539, 2, -65537, 65539, 2, -131073, 65539, 2, -196609, 65539, 2, -262145, 196611, 1610612738, -1, 65539, 1, 393214, 196611, 1342177282, 393213, 196611, 1342177282, 393212, 196611, 1342177282, 393211, 196611, 1342177282, 327674, 196611, 805306370, 262138, 196611, 805306370, 196602, 196611, 805306370, 131066, 196611, 805306370, -196614, 196611, 805306370, -131078, 196611, 805306370, -65542, 196611, 805306370, -6, 196611, 805306370, 65530, 196611, 805306370, -262149, 196611, 1610612738, -262148, 196611, 1610612738, -262147, 196611, 1610612738, -196612, 65539, 2, -196613, 65539, 1, -131075, 65539, 2, -196611, 65539, 2, -262146, 196611, 1610612738, -196610, 65539, 2, -5, 65539, 1, -131074, 65539, 2, -4, 65539, 2, 65531, 65539, 1, -3, 65539, 2, 65532, 65539, 2, 131067, 65539, 1, 196603, 65539, 1, 131069, 65539, 1, 262141, 65539, 1, 196606, 65539, 1, 196605, 65539, 1, 131070, 65539, 2, 262142, 65539, 1, 327677, 65539, 1, 327678, 65539, 1, 327681, 196611, 1342177282, -327677, 196611, 1610612738, -327678, 196611, 1610612738, -327679, 196611, 1610612738, -262143, 65539, 2, -196607, 65539, 2, -131071, 65539, 2, -65535, 65539, 1, 196609, 65539, 1, 131073, 65539, 2, 65537, 65539, 2, 1, 65539, 2, -131070, 65539, 2, -196606, 65539, 2, -262142, 65539, 2, -262140, 196611, 2, -262141, 65539, 2, -196604, 196611, 2, -131068, 196611, 2, -131069, 65539, 2, -196605, 65539, 2, -65533, 65539, 1, -65534, 65539, 1, 3, 65539, 1, 4, 196611, 2, -65532, 196611, 2, 65540, 196611, 2, 2, 65539, 2, 65538, 65539, 1, 131074, 65539, 1, 196610, 65539, 2, 262145, 65539, 2, 262146, 65539, 2, 327682, 196611, 1342177282, 327683, 196611, 1342177282, 131076, 196611, 2, 196612, 196611, 2, 262148, 196611, 2, 65539, 65539, 2, 131075, 65539, 2, 196611, 65539, 1, 262147, 65539, 1, -65540, 65539, 2, -65541, 65539, 1, -131077, 65539, 1, -131076, 65539, 2, -65539, 65539, 2, 65533, 65539, 1, 327676, 65539, 1, 327675, 65539, 1, 262139, 65539, 1, 262140, 65539, 1, 196604, 65539, 1, 131068, 65539, 1)
+tile_map_data = PackedByteArray("AAD//wAAAAACAAIAAAD/////AAABAAIAAAD///7/AAACAAIAAAD///3/AAACAAIAAAD///z/AAACAAIAAAD//wEAAAACAAIAAAD//wIAAAACAAIAAAD//wMAAAACAAIAAAD//wQAAAABAAIAAAD+/wQAAAACAAIAAAD+/wMAAAABAAEAAAD+/wIAAAACAAIAAAD+/wEAAAACAAIAAAD+/wAAAAACAAIAAAD+////AAACAAIAAAD+//7/AAACAAIAAAD+//3/AAACAAIAAAD+//z/AAACAAIAAAD9//z/AAACAAIAAAD9//3/AAACAAIAAAD9//7/AAACAAIAAAD9////AAACAAIAAAD9/wAAAAACAAIAAAD9/wEAAAACAAIAAAD9/wIAAAABAAEAAAD9/wMAAAACAAIAAAD9/wQAAAABAAIAAAD8/wQAAAACAAIAAAD8/wMAAAACAAIAAAD8/wIAAAABAAIAAAD8/wEAAAABAAEAAAD8/wAAAAABAAIAAAD8////AAACAAEAAAD8//7/AAACAAIAAAD8//3/AAACAAIAAAD8//z/AAACAAIAAAD7//z/AAACAAIAAAD7//3/AAACAAIAAAD7//7/AAACAAIAAAD7////AAACAAIAAAD7/wAAAAACAAIAAAD7/wEAAAABAAEAAAD7/wIAAAACAAIAAAD7/wMAAAABAAIAAAD7/wQAAAACAAIAAAAAAAQAAAACAAIAAAAAAAMAAAABAAEAAAAAAAIAAAABAAEAAAAAAAEAAAACAAEAAAAAAAAAAAABAAEAAAAAAP//AAABAAIAAAAAAP7/AAACAAIAAAAAAP3/AAACAAIAAAAAAPz/AAACAAIAAAABAPz/AAACAAIAAAABAP3/AAACAAIAAAABAP7/AAACAAIAAAABAP//AAACAAIAAAABAAAAAAABAAEAAAABAAEAAAACAAIAAAABAAIAAAABAAEAAAABAAMAAAABAAIAAAABAAQAAAACAAEAAAACAAMAAAABAAEAAAACAAQAAAACAAIAAAACAAIAAAABAAIAAAACAAEAAAABAAIAAAACAAAAAAACAAEAAAACAP//AAACAAIAAAACAP7/AAACAAIAAAACAP3/AAACAAIAAAACAPz/AAACAAIAAAADAPz/AAACAAIAAAADAP3/AAACAAIAAAADAP7/AAACAAIAAAADAP//AAACAAIAAAADAAAAAAACAAIAAAADAAEAAAACAAIAAAADAAIAAAACAAIAAAADAAMAAAACAAIAAAADAAQAAAACAAIAAAAEAAQAAAADAAIAAAAEAAMAAAADAAIAAAAEAAIAAAADAAIAAAAEAAEAAAADAAIAAAAEAAAAAAADAAIAAAAEAP//AAADAAIAAAAEAP7/AAADAAIAAAAEAP3/AAADAAIAAAAEAPz/AAADAAIAAAADAPv/AAACAAAAAAACAPv/AAACAAAAAAABAPv/AAACAAAAAAAAAPv/AAACAAAAAAD///v/AAACAAAAAAD+//v/AAACAAAAAAD9//v/AAACAAAAAAD8//v/AAACAAAAAAD7//v/AAACAAAAAAD6//z/AAAAAAEAAAD6//3/AAAAAAEAAAD6//7/AAAAAAEAAAD6////AAAAAAEAAAD6/wAAAAAAAAEAAAD6/wEAAAAAAAEAAAD6/wIAAAAAAAEAAAD6/wMAAAAAAAEAAAD6/wQAAAAAAAEAAAD6//v/AAAAAAAAAAAEAPv/AAADAAAAAAD6/wUAAAAAAAMAAAD7/wUAAAABAAMAAAD8/wUAAAABAAMAAAD9/wUAAAABAAMAAAD+/wUAAAABAAMAAAD//wUAAAABAAMAAAAAAAUAAAABAAMAAAABAAUAAAABAAMAAAACAAUAAAABAAMAAAADAAUAAAABAAMAAAAEAAUAAAADAAMAAAA=")
+tile_set = ExtResource("2_vvy2w")
 
 [node name="Defenders" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-80, -112)
 
 [node name="Defender" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(16, 32)
+position = Vector2(80, -16)
 
 [node name="Defender2" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(176, 80)
-
-[node name="Defender3" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(0, 192)
-
-[node name="Defender4" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(144, 192)
+position = Vector2(-16, 160)
 
 [node name="Obstacles" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-80, -112)
 
-[node name="Obstacle" parent="Obstacles" instance=ExtResource("7_1o45p")]
+[node name="Pillar" parent="Obstacles" instance=ExtResource("8_h8v3a")]
 position = Vector2(-48, -16)
 
+[node name="Pillar3" parent="Obstacles" instance=ExtResource("8_h8v3a")]
+position = Vector2(208, 240)
+
+[node name="Pillar2" parent="Obstacles" instance=ExtResource("8_h8v3a")]
+position = Vector2(208, -16)
+
+[node name="Pillar4" parent="Obstacles" instance=ExtResource("8_h8v3a")]
+position = Vector2(-48, 240)
+
 [node name="Obstacle2" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-16, -16)
+position = Vector2(-16, 24)
 
 [node name="Obstacle3" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(16, -16)
+position = Vector2(8, 8)
 
 [node name="Obstacle4" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(48, -16)
+position = Vector2(48, 16)
 
 [node name="Obstacle5" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(112, -16)
+position = Vector2(112, 16)
 
 [node name="Obstacle6" parent="Obstacles" instance=ExtResource("7_1o45p")]
 position = Vector2(144, -16)
@@ -110,155 +64,86 @@ position = Vector2(144, -16)
 [node name="Obstacle7" parent="Obstacles" instance=ExtResource("7_1o45p")]
 position = Vector2(176, -16)
 
-[node name="Obstacle8" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(208, -16)
-
 [node name="Obstacle9" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-48, 16)
+position = Vector2(8, 32)
 
 [node name="Obstacle10" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-16, 16)
+position = Vector2(0, 64)
 
 [node name="Obstacle11" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(32, 0)
+position = Vector2(32, 32)
 
 [node name="Obstacle12" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(48, 16)
+position = Vector2(192, 80)
 
 [node name="Obstacle13" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(80, 16)
+position = Vector2(144, 176)
 
 [node name="Obstacle14" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(112, 16)
+position = Vector2(112, 48)
 
 [node name="Obstacle15" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(144, 16)
+position = Vector2(160, 224)
 
 [node name="Obstacle16" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(176, 16)
+position = Vector2(144, 16)
 
 [node name="Obstacle17" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(208, 16)
+position = Vector2(176, 16)
 
 [node name="Obstacle18" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-48, 48)
+position = Vector2(-16, 96)
 
 [node name="Obstacle19" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(48, 48)
+position = Vector2(48, 112)
 
 [node name="Obstacle20" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(80, 48)
+position = Vector2(80, 112)
 
 [node name="Obstacle21" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(128, 48)
+position = Vector2(72, 168)
 
 [node name="Obstacle22" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(160, 48)
+position = Vector2(144, 128)
 
 [node name="Obstacle23" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(192, 48)
+position = Vector2(192, 64)
 
 [node name="Obstacle24" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-48, 80)
-
-[node name="Obstacle25" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-16, 80)
-
-[node name="Obstacle26" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(16, 80)
-
-[node name="Obstacle27" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(80, 96)
-
-[node name="Obstacle28" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(112, 80)
-
-[node name="Obstacle29" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(208, 80)
-
-[node name="Obstacle30" parent="Obstacles" instance=ExtResource("7_1o45p")]
 position = Vector2(-48, 112)
 
+[node name="Obstacle25" parent="Obstacles" instance=ExtResource("7_1o45p")]
+position = Vector2(56, 216)
+
+[node name="Obstacle26" parent="Obstacles" instance=ExtResource("7_1o45p")]
+position = Vector2(104, 216)
+
+[node name="Obstacle27" parent="Obstacles" instance=ExtResource("7_1o45p")]
+position = Vector2(104, 240)
+
+[node name="Obstacle28" parent="Obstacles" instance=ExtResource("7_1o45p")]
+position = Vector2(208, 192)
+
+[node name="Obstacle29" parent="Obstacles" instance=ExtResource("7_1o45p")]
+position = Vector2(200, 120)
+
+[node name="Obstacle30" parent="Obstacles" instance=ExtResource("7_1o45p")]
+position = Vector2(-48, 192)
+
 [node name="Obstacle31" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(0, 112)
+position = Vector2(0, 216)
 
-[node name="Obstacle32" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(64, 112)
+[node name="Pot" parent="Obstacles" instance=ExtResource("7_1o45p")]
+position = Vector2(56, 240)
 
-[node name="Obstacle33" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(112, 112)
+[node name="Vase" parent="Obstacles" instance=ExtResource("6_1o45p")]
+position = Vector2(80, 208)
 
-[node name="Obstacle34" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(192, 128)
+[node name="Vase2" parent="Obstacles" instance=ExtResource("6_1o45p")]
+position = Vector2(176, 80)
 
-[node name="Obstacle35" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(208, 112)
-
-[node name="Obstacle36" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-32, 144)
-
-[node name="Obstacle37" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(16, 144)
-
-[node name="Obstacle38" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(48, 144)
-
-[node name="Obstacle39" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(80, 128)
-
-[node name="Obstacle40" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(128, 128)
-
-[node name="Obstacle41" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(144, 160)
-
-[node name="Obstacle42" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(208, 176)
-
-[node name="Obstacle43" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-48, 176)
-
-[node name="Obstacle44" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(32, 160)
-
-[node name="Obstacle45" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(48, 176)
-
-[node name="Obstacle46" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(112, 176)
-
-[node name="Obstacle47" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(160, 176)
-
-[node name="Obstacle48" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-48, 208)
-
-[node name="Obstacle49" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-32, 224)
-
-[node name="Obstacle50" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(208, 208)
-
-[node name="Obstacle51" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-48, 240)
-
-[node name="Obstacle52" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(-16, 240)
-
-[node name="Obstacle53" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(16, 240)
-
-[node name="Obstacle54" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(48, 240)
-
-[node name="Obstacle55" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(112, 240)
-
-[node name="Obstacle56" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(160, 240)
-
-[node name="Obstacle57" parent="Obstacles" instance=ExtResource("7_1o45p")]
-position = Vector2(208, 240)
+[node name="Vase3" parent="Obstacles" instance=ExtResource("6_1o45p")]
+position = Vector2(176, 168)
 
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(0, -144)
@@ -271,3 +156,6 @@ shape = SubResource("RectangleShape2D_1pnwq")
 
 [node name="SlimeSpawn" type="Marker2D" parent="."]
 position = Vector2(0, 128)
+
+[node name="Vase" parent="." instance=ExtResource("6_1o45p")]
+position = Vector2(-88, -72)

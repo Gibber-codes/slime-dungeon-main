@@ -8,7 +8,7 @@
 ## 📚 Documentation Index
 
 ### Core Documentation
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - High-level system architecture with Mermaid diagrams
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - High-level system architecture
 - **[ROADMAP.md](ROADMAP.md)** - Step-by-step implementation guide with time estimates
 - **[STATUS.md](STATUS.md)** - Current implementation status tracking
 
@@ -74,9 +74,14 @@ Slime bounces → Collides with enemies → Deals damage → Enemy dies
 
 | Entity | Base Class | Role |
 |--------|------------|------|
-| **Slime** | BaseEntity (CharacterBody2D) | Player character, autonomous movement |
-| **Defender** | BaseEntity (CharacterBody2D) | Enemy, stationary attacks |
-| **Obstacle** | StaticBody2D | Environmental objects, seekable targets |
+| **Slime** | CharacterBody2D (independent) | Player character, autonomous movement |
+| **Defender** | BaseEntity (StaticBody2D) | Enemy, stationary attacks |
+| **Obstacle** | BaseEntity (StaticBody2D) | Environmental objects, seekable targets |
+
+**Note:** BaseEntity extends StaticBody2D and is used for stationary entities. Slime is independent and extends CharacterBody2D directly for dynamic movement.
+
+> [!IMPORTANT]
+> **Script Reusability:** You do NOT need to create a new GDScript for every new entity. Attach `scripts/core/BaseEntity.gd` directly to simple static objects (like Crates, Walls, Spikes) that just need health, damage, or bounciness. Only create a unique script (e.g., `Defender.gd`) if the entity needs custom logic beyond what `BaseEntity` provides.
 
 ---
 
@@ -258,9 +263,10 @@ autoloads/SignalBus.gd        - Events
 
 **Entities (Critical):**
 ```
-scripts/core/BaseEntity.gd    - Health/damage base
+scripts/core/BaseEntity.gd    - Health/damage base (Attach this to simple objects!)
 scripts/entities/Slime.gd     - Player physics
 scripts/entities/Defender.gd  - Enemy AI
+scripts/objects/Object.gd     - (Optional) Base for static objects, or just use BaseEntity
 ```
 
 **Systems (High Priority):**
@@ -373,17 +379,7 @@ resources/nodes/Agility.tres
 
 ---
 
-## 📊 Mermaid Diagrams Available
 
-All system design documents include interactive Mermaid diagrams:
-
-- **Architecture Overview:** System component relationships
-- **Physics System:** Movement state machine, bounce flow
-- **Combat System:** Damage calculation flow, combat sequence
-- **Node System:** Node tree, upgrade flow
-- **Game Loop:** Main game flow, data flow
-
-View diagrams in the respective system design documents.
 
 ---
 
