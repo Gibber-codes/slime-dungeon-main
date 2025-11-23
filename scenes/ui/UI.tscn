@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2a3b4c5e6f7g"]
 
-[ext_resource type="PackedScene" uid="uid://y18oyxrqu456" path="res://scenes/ui/HUD.tscn" id="2_m01cm"]
+[ext_resource type="PackedScene" uid="uid://y18oyxrqu456" path="res://scenes/ui/hud/HUD.tscn" id="2_m01cm"]
 
 [node name="UI" type="CanvasLayer"]
 follow_viewport_enabled = true

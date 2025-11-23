@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://y18oyxrqu456"]
+
+[ext_resource type="Script" uid="uid://hed2f2h0ykyw" path="res://scripts/ui/HUD.gd" id="1_hud_script"]
+
+[node name="Hud" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hud_script")
+
+[node name="DungeonViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 173.0
+offset_right = 813.0
+offset_bottom = 640.0
+stretch = true
+
+[node name="DungeonViewport" type="SubViewport" parent="DungeonViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 640)
+render_target_update_mode = 0
+
+[node name="GameInfoPanel" type="SubViewportContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(2, 2)
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GameInfoPanel"]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 0
+
+[node name="profileImageX" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.21770102, 0.21770105, 0.21770105, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false

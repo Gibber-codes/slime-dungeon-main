@@ -217,6 +217,3 @@ func _seek_target(delta: float) -> void:
 		else:
 			# Hit a wall or non-seekable object, bounce but continue seeking
 			_handle_bounce(collision)
-
-
-

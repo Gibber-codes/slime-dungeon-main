@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfl28fd40ljiv"]
 
 [ext_resource type="Script" uid="uid://bq1acdg4ulbia" path="res://scripts/entities/Slime.gd" id="1_q3i8h"]
-[ext_resource type="Texture2D" uid="uid://dnd1ydxjm8sn6" path="res://assets/sprites/Slime.png" id="2_ihga3"]
+[ext_resource type="Texture2D" uid="uid://dfoo16c1ml802" path="res://assets/slime/32_slime_test.svg" id="2_q3i8h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xh0k"]
 radius = 6.0
@@ -21,8 +21,8 @@ bounciness = 0.9
 max_health = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.03, 0.03)
-texture = ExtResource("2_ihga3")
+texture_filter = 1
+texture = ExtResource("2_q3i8h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7xh0k")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bm6irlx0ukdwi"]
 
-[ext_resource type="Texture2D" uid="uid://bgwd35de8ybb2" path="res://assets/sprites/Rat_2.png" id="1_dr508"]
+[ext_resource type="Texture2D" uid="uid://bgwd35de8ybb2" path="res://assets/entities/Rat_2.png" id="1_dr508"]
 [ext_resource type="Script" uid="uid://cv88ssvdcpbop" path="res://scripts/entities/Defender.gd" id="1_eblc1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0l4kg"]

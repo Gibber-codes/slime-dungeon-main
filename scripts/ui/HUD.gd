@@ -7,19 +7,15 @@ extends Control
 @onready var health_bar: TextureProgressBar = $menuRight/slimeBars/statsBars/slimeHealthBar
 # @onready var monster_core_bar: TextureProgressBar = $SubViewportContainer/SubViewport/menuRight/slimeBars/monsterCoreBar
 
-@onready var dungeon_viewport = $SubViewportContainer/SubViewport/DungeonViewportContainer/DungeonViewport
-@onready var dungeon_camera = $SubViewportContainer/SubViewport/DungeonViewportContainer/DungeonViewport/DungeonCamera
-
-# Set your actual room size here
-@export var room_size := Vector2(320, 320)
-
 var energy_counter: Label = null
 var room_counter: Label = null
-
+var dungeon_viewport: SubViewport = null
+var dungeon_camera: Camera2D = null
 var slime: Node2D
 
+@export var room_size := Vector2(640, 360)
+
 func _ready():
-	setup_dungeon_viewport()
 	
 	# Optional HUD labels (may not exist in the scene)
 	if has_node("EnergyCounter"):
@@ -41,7 +37,7 @@ func _ready():
 			slime.health_changed.connect(_on_health_changed)
 			# Initialize health bar
 			_on_health_changed(slime.current_health, slime.max_health)
-
+	
 func _process(_delta):
 	if is_instance_valid(slime):
 		# Update Speed Bar
@@ -72,7 +68,11 @@ func _on_energy_changed(new_energy: float):
 func _on_room_changed(current_room: int, total_rooms: int):
 	if room_counter: # room_counter was not found in HUD.tscn, so checking validity
 		room_counter.text = "Room: %d/%d" % [current_room, total_rooms]
-
+		
+func set_viewport_references(viewport: SubViewport, camera: Camera2D):
+	dungeon_viewport = viewport
+	dungeon_camera = camera
+	setup_dungeon_viewport()
 func setup_dungeon_viewport():
 	# Share the game world
 	dungeon_viewport.world_2d = get_viewport().world_2d

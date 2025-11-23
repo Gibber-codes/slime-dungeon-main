@@ -1,13 +1,265 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq6a0wjko45ta"]
+[gd_scene load_steps=15 format=3 uid="uid://dq6a0wjko45ta"]
 
 [ext_resource type="Script" uid="uid://b3prn88b43syx" path="res://scripts/core/Main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://becb6m43g2mja" path="res://scenes/core/World.tscn" id="2_5pwbx"]
-[ext_resource type="PackedScene" uid="uid://d2a3b4c5e6f7g" path="res://scenes/ui/UI.tscn" id="2_fun78"]
+[ext_resource type="PackedScene" uid="uid://dfl28fd40ljiv" path="res://scenes/entities/Slime.tscn" id="3_kitw3"]
+[ext_resource type="Texture2D" uid="uid://6imhodpabc6a" path="res://assets/ui elements/monsterCoreProgress.png" id="4_a4rsn"]
+[ext_resource type="Texture2D" uid="uid://cyyl2bfji2blu" path="res://assets/ui elements/underBars.png" id="6_nxm05"]
+[ext_resource type="Texture2D" uid="uid://bf2dbre7jmvvr" path="res://assets/ui elements/speedProgress.png" id="7_x24xt"]
+[ext_resource type="Texture2D" uid="uid://crbkdubykprax" path="res://assets/ui elements/frenzyProgress.png" id="8_founp"]
+[ext_resource type="Texture2D" uid="uid://dfjiqitsh4t4k" path="res://assets/ui elements/momentumProgress.png" id="9_tupnw"]
+[ext_resource type="Texture2D" uid="uid://bb1b5j1dye7ik" path="res://assets/ui elements/focusProgress.png" id="10_wpo1s"]
+[ext_resource type="Texture2D" uid="uid://bwa6sswbsb7u4" path="res://assets/ui elements/healthProgress.png" id="11_ship8"]
+[ext_resource type="Texture2D" uid="uid://kcerjbxmye5n" path="res://assets/ui elements/underMonsterCore.png" id="12_d7485"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud/StatsMenu.tscn" id="12_x24xt"]
+[ext_resource type="Texture2D" uid="uid://oghkrd8tebxx" path="res://assets/ui elements/Slime Screen overlay.png" id="13_1yraq"]
+[ext_resource type="Script" uid="uid://bn8qhgb4t1uhe" path="res://scenes/ui/hud/stats_menu.gd" id="13_founp"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_main")
 
-[node name="UI" parent="." instance=ExtResource("2_fun78")]
-follow_viewport_enabled = false
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
 
-[node name="World" parent="." instance=ExtResource("2_5pwbx")]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Dungeon" type="Node2D" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
+
+[node name="Slime" parent="SubViewportContainer/SubViewport/Dungeon" instance=ExtResource("3_kitw3")]
+position = Vector2(640, 360)
+scale = Vector2(0.5, 0.5)
+momentum_gain_rate = 5.0
+momentum_speed_multiplier = 0.5
+base_physical_damage = 20.0
+bounciness = 0.97
+
+[node name="PointLight2D" type="PointLight2D" parent="SubViewportContainer/SubViewport/Dungeon/Slime"]
+texture_filter = 1
+texture = ExtResource("4_a4rsn")
+
+[node name="World" parent="SubViewportContainer/SubViewport/Dungeon" instance=ExtResource("2_5pwbx")]
+
+[node name="DungeonCamera" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+
+[node name="HUD" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(2, 2)
+mouse_filter = 2
+
+[node name="MenuRight" type="Control" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 392.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MenuTop" type="Control" parent="HUD/MenuRight"]
+anchors_preset = 0
+offset_left = 24.0
+offset_right = 248.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="HUD/MenuRight/MenuTop"]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MenuRight/MenuTop"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 5.0
+offset_right = 222.0
+offset_bottom = 31.0
+theme_override_constants/separation = 14
+
+[node name="TextureButton5" type="TextureButton" parent="HUD/MenuRight/MenuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/MenuRight/MenuTop/HBoxContainer/TextureButton5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="TextureButton6" type="TextureButton" parent="HUD/MenuRight/MenuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/MenuRight/MenuTop/HBoxContainer/TextureButton6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="TextureButton3" type="TextureButton" parent="HUD/MenuRight/MenuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/MenuRight/MenuTop/HBoxContainer/TextureButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="TextureButton4" type="TextureButton" parent="HUD/MenuRight/MenuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/MenuRight/MenuTop/HBoxContainer/TextureButton4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="SlimeBars" type="Control" parent="HUD/MenuRight"]
+anchors_preset = 0
+offset_top = 216.0
+offset_right = 113.33334
+offset_bottom = 360.33334
+
+[node name="StatsBars" type="VBoxContainer" parent="HUD/MenuRight/SlimeBars"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.64400005
+anchor_bottom = 0.41900003
+offset_left = 30.0
+offset_top = -0.333
+offset_right = 31.01332
+offset_bottom = -0.32631683
+theme_override_constants/separation = 0
+
+[node name="slimeSpeedBar" type="TextureProgressBar" parent="HUD/MenuRight/SlimeBars/StatsBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+value = 30.0
+texture_under = ExtResource("6_nxm05")
+texture_progress = ExtResource("7_x24xt")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="slimeFrenzyBar" type="TextureProgressBar" parent="HUD/MenuRight/SlimeBars/StatsBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+value = 40.0
+texture_under = ExtResource("6_nxm05")
+texture_progress = ExtResource("8_founp")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="slimeMomentumBar" type="TextureProgressBar" parent="HUD/MenuRight/SlimeBars/StatsBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("6_nxm05")
+texture_progress = ExtResource("9_tupnw")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="slimeAutoSeekBar" type="TextureProgressBar" parent="HUD/MenuRight/SlimeBars/StatsBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+value = 60.0
+texture_under = ExtResource("6_nxm05")
+texture_progress = ExtResource("10_wpo1s")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="slimeHealthBar" type="TextureProgressBar" parent="HUD/MenuRight/SlimeBars/StatsBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+value = 70.0
+texture_under = ExtResource("6_nxm05")
+texture_progress = ExtResource("11_ship8")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="monsterCoreBar" type="TextureProgressBar" parent="HUD/MenuRight/SlimeBars"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 41.0
+offset_right = 103.0
+offset_bottom = 141.0
+value = 35.0
+fill_mode = 3
+texture_under = ExtResource("12_d7485")
+texture_progress = ExtResource("4_a4rsn")
+
+[node name="AccountPlaceholder" type="ColorRect" parent="HUD/MenuRight"]
+layout_mode = 0
+offset_left = 104.33331
+offset_top = 216.33334
+offset_right = 243.33331
+offset_bottom = 355.33344
+color = Color(0.21770102, 0.21770105, 0.21770105, 1)
+
+[node name="HUDText" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MenuRightText" type="Control" parent="HUDText"]
+custom_minimum_size = Vector2(496, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="StatsMenu" parent="HUDText/MenuRightText" instance=ExtResource("12_x24xt")]
+visible = false
+layout_mode = 0
+offset_left = 57.0
+offset_top = 77.0
+offset_right = 487.0
+offset_bottom = 577.0
+script = ExtResource("13_founp")
+
+[node name="Label3" type="Label" parent="HUDText"]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 98.0
+offset_right = 1091.0
+offset_bottom = 156.0
+theme_override_font_sizes/font_size = 28
+text = "Settings"
+
+[node name="Overlay" type="Sprite2D" parent="HUDText"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("13_1yraq")
+offset = Vector2(320, 180)
