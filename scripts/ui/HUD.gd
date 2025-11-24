@@ -6,6 +6,7 @@ extends Control
 @onready var auto_seek_bar: TextureProgressBar = $menuRight/slimeBars/statsBars/slimeAutoSeekBar
 @onready var health_bar: TextureProgressBar = $menuRight/slimeBars/statsBars/slimeHealthBar
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # @onready var monster_core_bar: TextureProgressBar = $SubViewportContainer/SubViewport/menuRight/slimeBars/monsterCoreBar
 
 var energy_counter: Label = null
@@ -18,13 +19,22 @@ var dungeon_camera: Camera2D = null
 var energy_counter: Label = null
 var room_counter: Label = null
 >>>>>>> Stashed changes
+=======
+@export var room_size := Vector2(640, 360)
+
+var energy_counter: Label = null
+var room_counter: Label = null
+>>>>>>> Stashed changes
 var slime: Node2D
 
 @export var room_size := Vector2(640, 360)
 
 func _ready():
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 	# Optional HUD labels (may not exist in the scene)
@@ -48,7 +58,11 @@ func _ready():
 			# Initialize health bar
 			_on_health_changed(slime.current_health, slime.max_health)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	
+=======
+			
+>>>>>>> Stashed changes
 =======
 			
 >>>>>>> Stashed changes
@@ -77,6 +91,7 @@ func _on_energy_changed(new_energy: float):
 func _on_room_changed(current_room: int, total_rooms: int):
 	if room_counter:
 		room_counter.text = "Room: %d/%d" % [current_room, total_rooms]
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 		
 func set_viewport_references(viewport: SubViewport, camera: Camera2D):
@@ -110,5 +125,7 @@ func get_dungeon_viewport() -> SubViewport:
 
 func get_dungeon_camera() -> Camera2D:
 	return dungeon_camera
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

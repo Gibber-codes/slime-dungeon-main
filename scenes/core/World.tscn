@@ -5,6 +5,9 @@
 <<<<<<< Updated upstream
 =======
 [ext_resource type="PackedScene" uid="uid://dfl28fd40ljiv" path="res://scenes/entities/Slime.tscn" id="2_ilat6"]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://cyyl2bfji2blu" path="res://assets/ui elements/underBars.png" id="3_qpv4b"]
 [ext_resource type="Texture2D" uid="uid://bf2dbre7jmvvr" path="res://assets/ui elements/speedProgress.png" id="4_eggmk"]
@@ -16,6 +19,7 @@
 [node name="World" type="Node2D"]
 script = ExtResource("1_script")
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 [node name="RoomManager2" type="Node" parent="."]
 
@@ -36,6 +40,14 @@ anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
 
+=======
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+>>>>>>> Stashed changes
 [node name="RoomManager" type="Node" parent="Control"]
 
 [node name="Room" parent="Control/RoomManager" instance=ExtResource("1_jkw84")]
@@ -63,6 +75,9 @@ offset_left = 362.0
 offset_top = 28.0
 offset_right = 436.0
 offset_bottom = 68.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 theme_override_constants/separation = 0
 

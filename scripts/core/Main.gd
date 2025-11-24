@@ -25,7 +25,16 @@ var max_scale := 4.0
 var is_panning := false
 var last_mouse_pos := Vector2.ZERO
 
+# Zoom and pan variables
+var base_scale := 1.0
+var current_scale := 1.0
+var min_scale := 1.0
+var max_scale := 4.0
+var is_panning := false
+var last_mouse_pos := Vector2.ZERO
+
 func _ready():
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 		# Force SubViewport to correct size
 	dungeon_viewport.size = Vector2i(640, 360)
@@ -40,6 +49,8 @@ func _ready():
 	# Initialize position properly
 	_clamp_container_position(viewport_container)
 =======
+=======
+>>>>>>> Stashed changes
 	
 	var viewport_container = $SubViewportContainer
 	
@@ -52,6 +63,9 @@ func _ready():
 	# Initialize position properly
 	_clamp_container_position(viewport_container)
 	
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	camera_target = world.get_node_or_null("CameraTarget")
 	setup_cameras()
@@ -59,10 +73,13 @@ func _ready():
 
 func setup_cameras():
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	# Enable the dungeon camera
 	if dungeon_camera:
 		dungeon_camera.enabled = true
 =======
+=======
+>>>>>>> Stashed changes
 	# Enable and position the dungeon camera
 	if dungeon_camera:
 		dungeon_camera.enabled = true
@@ -72,6 +89,9 @@ func setup_cameras():
 		
 		# Set zoom to 1:1
 		dungeon_camera.zoom = Vector2(1.0, 1.0)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	
 func _process(_delta):
@@ -79,10 +99,13 @@ func _process(_delta):
 
 func setup_hud():
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	# The world is already in the viewport, just make sure camera is enabled
 	if dungeon_camera:
 		dungeon_camera.enabled = true
 =======
+=======
+>>>>>>> Stashed changes
 	# Pass references to the HUD
 	if hud:
 		hud.set_viewport_references(dungeon_viewport, dungeon_camera)
@@ -173,6 +196,9 @@ func _clamp_container_position(viewport_container: Control):
 	else:
 		# Clamp so edges don't show
 		viewport_container.position.y = clamp(viewport_container.position.y, min_y, 0)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 func get_current_room() -> Node2D:
@@ -189,6 +215,7 @@ func reset_game():
 		slime = new_world.get_node_or_null("Slime")
 		room_manager = new_world.get_node_or_null("RoomManager")
 		camera_target = new_world.get_node_or_null("CameraTarget")
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 		
 func _input(event):
@@ -280,5 +307,7 @@ func _clamp_container_position(viewport_container: Control):
 	else:
 		# Clamp so edges don't show
 		viewport_container.position.y = clamp(viewport_container.position.y, min_y, 0)
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
