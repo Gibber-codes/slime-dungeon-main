@@ -3,17 +3,28 @@
 [ext_resource type="Script" uid="uid://b3prn88b43syx" path="res://scripts/core/Main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://becb6m43g2mja" path="res://scenes/core/World.tscn" id="2_5pwbx"]
 [ext_resource type="PackedScene" uid="uid://dfl28fd40ljiv" path="res://scenes/entities/Slime.tscn" id="3_kitw3"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://6imhodpabc6a" path="res://assets/ui elements/monsterCoreProgress.png" id="4_a4rsn"]
+=======
+[ext_resource type="Texture2D" uid="uid://6imhodpabc6a" path="res://assets/textures/monsterCoreProgress.png" id="4_a4rsn"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://cyyl2bfji2blu" path="res://assets/ui elements/underBars.png" id="6_nxm05"]
 [ext_resource type="Texture2D" uid="uid://bf2dbre7jmvvr" path="res://assets/ui elements/speedProgress.png" id="7_x24xt"]
 [ext_resource type="Texture2D" uid="uid://crbkdubykprax" path="res://assets/ui elements/frenzyProgress.png" id="8_founp"]
 [ext_resource type="Texture2D" uid="uid://dfjiqitsh4t4k" path="res://assets/ui elements/momentumProgress.png" id="9_tupnw"]
 [ext_resource type="Texture2D" uid="uid://bb1b5j1dye7ik" path="res://assets/ui elements/focusProgress.png" id="10_wpo1s"]
 [ext_resource type="Texture2D" uid="uid://bwa6sswbsb7u4" path="res://assets/ui elements/healthProgress.png" id="11_ship8"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://kcerjbxmye5n" path="res://assets/ui elements/underMonsterCore.png" id="12_d7485"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud/StatsMenu.tscn" id="12_x24xt"]
 [ext_resource type="Texture2D" uid="uid://oghkrd8tebxx" path="res://assets/ui elements/Slime Screen overlay.png" id="13_1yraq"]
 [ext_resource type="Script" uid="uid://bn8qhgb4t1uhe" path="res://scenes/ui/hud/stats_menu.gd" id="13_founp"]
+=======
+[ext_resource type="Texture2D" uid="uid://kcerjbxmye5n" path="res://assets/textures/underMonsterCore.png" id="11_x24xt"]
+[ext_resource type="PackedScene" uid="uid://0fpbulbe3sf7" path="res://scenes/ui/hud/StatsMenu.tscn" id="12_x24xt"]
+[ext_resource type="Texture2D" uid="uid://oghkrd8tebxx" path="res://assets/ui elements/Slime Screen overlay.png" id="13_1yraq"]
+[ext_resource type="Script" path="res://scenes/ui/hud/stats_menu.gd" id="13_founp"]
+>>>>>>> Stashed changes
 
 [node name="Main" type="Node"]
 script = ExtResource("1_main")
@@ -23,8 +34,11 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+<<<<<<< Updated upstream
 grow_horizontal = 2
 grow_vertical = 2
+=======
+>>>>>>> Stashed changes
 stretch = true
 stretch_shrink = 2
 
@@ -55,7 +69,10 @@ texture = ExtResource("4_a4rsn")
 [node name="DungeonCamera" type="Camera2D" parent="SubViewportContainer/SubViewport"]
 
 [node name="HUD" type="Control" parent="."]
+<<<<<<< Updated upstream
 visible = false
+=======
+>>>>>>> Stashed changes
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
@@ -209,7 +226,11 @@ offset_right = 103.0
 offset_bottom = 141.0
 value = 35.0
 fill_mode = 3
+<<<<<<< Updated upstream
 texture_under = ExtResource("12_d7485")
+=======
+texture_under = ExtResource("11_x24xt")
+>>>>>>> Stashed changes
 texture_progress = ExtResource("4_a4rsn")
 
 [node name="AccountPlaceholder" type="ColorRect" parent="HUD/MenuRight"]
@@ -221,7 +242,10 @@ offset_bottom = 355.33344
 color = Color(0.21770102, 0.21770105, 0.21770105, 1)
 
 [node name="HUDText" type="Control" parent="."]
+<<<<<<< Updated upstream
 visible = false
+=======
+>>>>>>> Stashed changes
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -241,12 +265,23 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="StatsMenu" parent="HUDText/MenuRightText" instance=ExtResource("12_x24xt")]
+<<<<<<< Updated upstream
 visible = false
 layout_mode = 0
 offset_left = 57.0
 offset_top = 77.0
 offset_right = 487.0
 offset_bottom = 577.0
+=======
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.98200005
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = 77.0
+offset_right = -0.072021484
+offset_bottom = -143.0
+>>>>>>> Stashed changes
 script = ExtResource("13_founp")
 
 [node name="Label3" type="Label" parent="HUDText"]
@@ -258,8 +293,16 @@ offset_bottom = 156.0
 theme_override_font_sizes/font_size = 28
 text = "Settings"
 
+<<<<<<< Updated upstream
 [node name="Overlay" type="Sprite2D" parent="HUDText"]
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("13_1yraq")
 offset = Vector2(320, 180)
+=======
+[node name="HudOverlay" type="Sprite2D" parent="HUDText"]
+texture_filter = 1
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("13_1yraq")
+>>>>>>> Stashed changes

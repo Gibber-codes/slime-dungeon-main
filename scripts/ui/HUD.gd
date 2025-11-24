@@ -5,18 +5,28 @@ extends Control
 @onready var momentum_bar: TextureProgressBar = $menuRight/slimeBars/statsBars/slimeMomentumBar
 @onready var auto_seek_bar: TextureProgressBar = $menuRight/slimeBars/statsBars/slimeAutoSeekBar
 @onready var health_bar: TextureProgressBar = $menuRight/slimeBars/statsBars/slimeHealthBar
+<<<<<<< Updated upstream
 # @onready var monster_core_bar: TextureProgressBar = $SubViewportContainer/SubViewport/menuRight/slimeBars/monsterCoreBar
 
 var energy_counter: Label = null
 var room_counter: Label = null
 var dungeon_viewport: SubViewport = null
 var dungeon_camera: Camera2D = null
+=======
+@export var room_size := Vector2(640, 360)
+
+var energy_counter: Label = null
+var room_counter: Label = null
+>>>>>>> Stashed changes
 var slime: Node2D
 
 @export var room_size := Vector2(640, 360)
 
 func _ready():
+<<<<<<< Updated upstream
 	
+=======
+>>>>>>> Stashed changes
 	# Optional HUD labels (may not exist in the scene)
 	if has_node("EnergyCounter"):
 		energy_counter = $EnergyCounter
@@ -37,14 +47,14 @@ func _ready():
 			slime.health_changed.connect(_on_health_changed)
 			# Initialize health bar
 			_on_health_changed(slime.current_health, slime.max_health)
+<<<<<<< Updated upstream
 	
+=======
+			
+>>>>>>> Stashed changes
 func _process(_delta):
 	if is_instance_valid(slime):
 		# Update Speed Bar
-		# Assuming base_speed is around 100-300, and max speed with momentum might be higher. 
-		# Let's set a reasonable max for the bar for now, or relative to base.
-		# Slime.gd: base_speed = 100, max_momentum = 400. Max speed approx 100 + 400*0.5 = 300.
-		# Let's say max displayable speed is 400.
 		var current_speed = slime.velocity.length()
 		speed_bar.value = (current_speed / 400.0) * 100.0
 		
@@ -52,7 +62,6 @@ func _process(_delta):
 		momentum_bar.value = (slime.momentum / slime.max_momentum) * 100.0
 		
 		# Update Auto Seek Bar
-		# It counts down. 
 		auto_seek_bar.value = (slime.current_seek_timer / slime.auto_seek_timer) * 100.0
 		
 		# Frenzy Bar (Not implemented yet)
@@ -66,8 +75,9 @@ func _on_energy_changed(new_energy: float):
 		energy_counter.text = "Energy: " + str(int(new_energy))
 
 func _on_room_changed(current_room: int, total_rooms: int):
-	if room_counter: # room_counter was not found in HUD.tscn, so checking validity
+	if room_counter:
 		room_counter.text = "Room: %d/%d" % [current_room, total_rooms]
+<<<<<<< Updated upstream
 		
 func set_viewport_references(viewport: SubViewport, camera: Camera2D):
 	dungeon_viewport = viewport
@@ -100,3 +110,5 @@ func get_dungeon_viewport() -> SubViewport:
 
 func get_dungeon_camera() -> Camera2D:
 	return dungeon_camera
+=======
+>>>>>>> Stashed changes

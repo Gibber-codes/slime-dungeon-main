@@ -2,6 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dxld6p7bttxv8" path="res://scenes/rooms/Room.tscn" id="1_jkw84"]
 [ext_resource type="Script" uid="uid://bcpqc6ww7bsm" path="res://scripts/core/World.gd" id="1_script"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" uid="uid://dfl28fd40ljiv" path="res://scenes/entities/Slime.tscn" id="2_ilat6"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://cyyl2bfji2blu" path="res://assets/ui elements/underBars.png" id="3_qpv4b"]
 [ext_resource type="Texture2D" uid="uid://bf2dbre7jmvvr" path="res://assets/ui elements/speedProgress.png" id="4_eggmk"]
 [ext_resource type="Texture2D" uid="uid://crbkdubykprax" path="res://assets/ui elements/frenzyProgress.png" id="5_e4edk"]
@@ -12,6 +16,7 @@
 [node name="World" type="Node2D"]
 script = ExtResource("1_script")
 
+<<<<<<< Updated upstream
 [node name="RoomManager2" type="Node" parent="."]
 
 [node name="Room" parent="RoomManager2" instance=ExtResource("1_jkw84")]
@@ -24,6 +29,41 @@ offset_left = 200.0
 offset_top = 10.0
 offset_right = 274.0
 offset_bottom = 50.0
+=======
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="RoomManager" type="Node" parent="Control"]
+
+[node name="Room" parent="Control/RoomManager" instance=ExtResource("1_jkw84")]
+position = Vector2(200, 182)
+
+[node name="Slime" parent="." instance=ExtResource("2_ilat6")]
+visible = false
+momentum_gain_rate = 5.0
+momentum_speed_multiplier = 0.5
+base_physical_damage = 20.0
+bounciness = 0.97
+
+[node name="GameCamera" type="Camera2D" parent="."]
+visible = false
+position = Vector2(160, 160)
+zoom = Vector2(2.135, 2.135)
+
+[node name="CameraTarget" type="Marker2D" parent="."]
+
+[node name="statsBars" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.64400005
+anchor_bottom = 0.41900003
+offset_left = 362.0
+offset_top = 28.0
+offset_right = 436.0
+offset_bottom = 68.0
+>>>>>>> Stashed changes
 theme_override_constants/separation = 0
 
 [node name="slimeSpeedBar" type="TextureProgressBar" parent="RoomManager2/statsBars"]

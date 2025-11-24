@@ -2,7 +2,11 @@
 
 importer="font_data_dynamic"
 type="FontFile"
+<<<<<<< Updated upstream
 uid="uid://dhcod563pwuln"
+=======
+uid="uid://cp8xqv20smhrg"
+>>>>>>> Stashed changes
 path="res://.godot/imported/PixelatedEleganceRegular-ovyAA.ttf-e54daf0c0577790f81e939e524364136.fontdata"
 
 [deps]
