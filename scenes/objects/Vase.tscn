@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://iwgt8eff6ktc"]
+
+[ext_resource type="Script" uid="uid://bdie2gvoq08l5" path="res://scripts/core/BaseEntity.gd" id="1_03r42"]
+[ext_resource type="Texture2D" uid="uid://c22dm4213wjwy" path="res://assets/sprites/Vase.png" id="2_j1hym"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_03r42"]
+radius = 8.0
+
+[node name="Vase" type="StaticBody2D"]
+collision_mask = 3
+script = ExtResource("1_03r42")
+max_health = 10.0
+physical_damage = 0.0
+physical_defense = 0.0
+metadata/_custom_type_script = "uid://bdie2gvoq08l5"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_j1hym")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_03r42")

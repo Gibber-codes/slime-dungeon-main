@@ -1,40 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq6a0wjko45ta"]
+[gd_scene load_steps=4 format=3 uid="uid://dq6a0wjko45ta"]
 
-[ext_resource type="PackedScene" uid="uid://dxld6p7bttxv8" path="res://scenes/rooms/Room.tscn" id="2_room"]
-[ext_resource type="PackedScene" uid="uid://dfl28fd40ljiv" path="res://scenes/entities/Slime.tscn" id="3_hud"]
+[ext_resource type="Script" uid="uid://b3prn88b43syx" path="res://scripts/core/Main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://becb6m43g2mja" path="res://scenes/core/World.tscn" id="2_5pwbx"]
+[ext_resource type="PackedScene" uid="uid://d2a3b4c5e6f7g" path="res://scenes/ui/UI.tscn" id="2_fun78"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_main")
 
-[node name="RoomManager" type="Node" parent="."]
+[node name="UI" parent="." instance=ExtResource("2_fun78")]
+follow_viewport_enabled = false
 
-[node name="GameManager" type="Node" parent="."]
-
-[node name="Slime" parent="." instance=ExtResource("3_hud")]
-position = Vector2(0, 64)
-
-[node name="Room" parent="." instance=ExtResource("2_room")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="UI" type="CanvasLayer" parent="."]
-offset = Vector2(0, -0.06)
-rotation = -0.08726646
-transform = Transform2D(0.9961947, -0.08715574, 0.08715574, 0.9961947, 0, -0.06)
-
-[node name="SlimeHealth" type="ProgressBar" parent="UI"]
-offset_left = 173.0
-offset_top = -146.0
-offset_right = 398.0
-offset_bottom = -119.0
-
-[node name="SpeedBar" type="ProgressBar" parent="UI"]
-offset_left = 173.0
-offset_top = -115.0
-offset_right = 398.0
-offset_bottom = -88.0
-
-[node name="momentiumBar" type="ProgressBar" parent="UI"]
-offset_left = 173.0
-offset_top = -84.0
-offset_right = 398.0
-offset_bottom = -57.0
+[node name="World" parent="." instance=ExtResource("2_5pwbx")]

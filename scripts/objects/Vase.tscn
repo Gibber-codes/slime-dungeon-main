@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://co7kht6q7nt1"]
+
+[ext_resource type="Script" uid="uid://bdie2gvoq08l5" path="res://scripts/core/BaseEntity.gd" id="1_imuw0"]
+
+[node name="Vase" type="StaticBody2D"]
+script = ExtResource("1_imuw0")
+metadata/_custom_type_script = "uid://bdie2gvoq08l5"

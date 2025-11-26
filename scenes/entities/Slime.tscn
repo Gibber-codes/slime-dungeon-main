@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dnd1ydxjm8sn6" path="res://assets/sprites/Slime.png" id="2_ihga3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xh0k"]
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sti83"]
+radius = 6.0
 
 [node name="Slime" type="CharacterBody2D"]
 collision_layer = 2
@@ -13,18 +15,21 @@ collision_mask = 5
 floor_stop_on_slope = false
 floor_max_angle = 0.0
 script = ExtResource("1_q3i8h")
-bounciness = 0.1
-momentum_damage_multiplier = 0.08
-max_health = 200.0
+momentum_gain_rate = 200.0
+momentum_speed_multiplier = 2.0
+bounciness = 0.9
+momentum_damage_multiplier = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_ihga3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_7xh0k")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_sti83")

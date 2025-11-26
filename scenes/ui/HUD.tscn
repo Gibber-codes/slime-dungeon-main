@@ -1,3 +1,253 @@
-[gd_scene format=3 uid="uid://y18oyxrqu456"]
+[gd_scene load_steps=11 format=3 uid="uid://y18oyxrqu456"]
 
-[node name="Hud" type="Node2D"]
+[ext_resource type="Script" uid="uid://hed2f2h0ykyw" path="res://scripts/ui/HUD.gd" id="1_hud_script"]
+[ext_resource type="Texture2D" uid="uid://cyyl2bfji2blu" path="res://underBars.png" id="1_jvmx1"]
+[ext_resource type="Texture2D" uid="uid://bf2dbre7jmvvr" path="res://speedProgress.png" id="2_euikm"]
+[ext_resource type="Texture2D" uid="uid://crbkdubykprax" path="res://frenzyProgress.png" id="3_p4k5r"]
+[ext_resource type="Texture2D" uid="uid://dfjiqitsh4t4k" path="res://momentumProgress.png" id="4_38nk3"]
+[ext_resource type="Texture2D" uid="uid://oghkrd8tebxx" path="res://Slime Screen overlay.png" id="4_ig75s"]
+[ext_resource type="Texture2D" uid="uid://bb1b5j1dye7ik" path="res://focusProgress.png" id="5_6bi52"]
+[ext_resource type="Texture2D" uid="uid://bwa6sswbsb7u4" path="res://healthProgress.png" id="6_e8r00"]
+[ext_resource type="Texture2D" uid="uid://kcerjbxmye5n" path="res://assets/textures/underMonsterCore.png" id="7_4wy6o"]
+[ext_resource type="Texture2D" uid="uid://6imhodpabc6a" path="res://assets/textures/monsterCoreProgress.png" id="8_blesy"]
+
+[node name="Hud" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hud_script")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="DungeonViewportContainer" type="SubViewportContainer" parent="SubViewportContainer/SubViewport"]
+offset_left = 173.0
+offset_right = 813.0
+offset_bottom = 640.0
+stretch = true
+
+[node name="DungeonViewport" type="SubViewport" parent="SubViewportContainer/SubViewport/DungeonViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 640)
+render_target_update_mode = 4
+
+[node name="menuRight" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -248.66666
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="menuTop" type="Control" parent="menuRight"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="menuRight/menuTop"]
+layout_mode = 0
+offset_left = 20.0
+offset_right = 68.0
+offset_bottom = 48.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="menuRight/menuTop"]
+layout_mode = 0
+offset_left = 75.33334
+offset_top = 5.0
+offset_right = 245.33334
+offset_bottom = 31.0
+theme_override_constants/separation = 14
+
+[node name="TextureButton5" type="TextureButton" parent="menuRight/menuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="menuRight/menuTop/HBoxContainer/TextureButton5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="TextureButton6" type="TextureButton" parent="menuRight/menuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="menuRight/menuTop/HBoxContainer/TextureButton6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="TextureButton3" type="TextureButton" parent="menuRight/menuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="menuRight/menuTop/HBoxContainer/TextureButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="TextureButton4" type="TextureButton" parent="menuRight/menuTop/HBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="menuRight/menuTop/HBoxContainer/TextureButton4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="infoPanel" type="Control" parent="menuRight"]
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 36.0
+offset_right = 246.0
+offset_bottom = 214.0
+
+[node name="Panel" type="Panel" parent="menuRight/infoPanel"]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 178.0
+
+[node name="slimeBars" type="Control" parent="menuRight"]
+anchors_preset = 0
+offset_top = 216.0
+offset_right = 113.33334
+offset_bottom = 360.33334
+
+[node name="statsBars" type="VBoxContainer" parent="menuRight/slimeBars"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.64400005
+anchor_bottom = 0.41900003
+offset_left = 30.0
+offset_top = -0.333
+offset_right = 31.01332
+offset_bottom = -0.32631683
+theme_override_constants/separation = 0
+
+[node name="slimeSpeedBar" type="TextureProgressBar" parent="menuRight/slimeBars/statsBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+value = 30.0
+texture_under = ExtResource("1_jvmx1")
+texture_progress = ExtResource("2_euikm")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="slimeFrenzyBar" type="TextureProgressBar" parent="menuRight/slimeBars/statsBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+value = 40.0
+texture_under = ExtResource("1_jvmx1")
+texture_progress = ExtResource("3_p4k5r")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="slimeMomentumBar" type="TextureProgressBar" parent="menuRight/slimeBars/statsBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("1_jvmx1")
+texture_progress = ExtResource("4_38nk3")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="slimeAutoSeekBar" type="TextureProgressBar" parent="menuRight/slimeBars/statsBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+value = 60.0
+texture_under = ExtResource("1_jvmx1")
+texture_progress = ExtResource("5_6bi52")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="slimeHealthBar" type="TextureProgressBar" parent="menuRight/slimeBars/statsBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+value = 70.0
+texture_under = ExtResource("1_jvmx1")
+texture_progress = ExtResource("6_e8r00")
+texture_progress_offset = Vector2(0, 1)
+
+[node name="monsterCoreBar" type="TextureProgressBar" parent="menuRight/slimeBars"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 41.0
+offset_right = 103.0
+offset_bottom = 141.0
+value = 35.0
+fill_mode = 3
+texture_under = ExtResource("7_4wy6o")
+texture_progress = ExtResource("8_blesy")
+
+[node name="nodeViewX" type="ColorRect" parent="menuRight"]
+layout_mode = 0
+offset_left = 104.33331
+offset_top = 216.33334
+offset_right = 243.33331
+offset_bottom = 355.33344
+color = Color(0.21770102, 0.21770105, 0.21770105, 1)
+
+[node name="profileImageX" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.21770102, 0.21770105, 0.21770105, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="menuRightHigh" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1174.0
+offset_top = 11.0
+offset_right = 1913.0
+offset_bottom = 1068.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/menuRightHigh"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 94.0
+offset_right = 739.0
+offset_bottom = 627.0
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 1387.0
+offset_top = 124.0
+offset_right = 1498.0
+offset_bottom = 182.0
+theme_override_font_sizes/font_size = 28
+text = "Settings"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("4_ig75s")
+offset = Vector2(320, 180)
