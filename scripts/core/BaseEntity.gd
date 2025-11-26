@@ -21,6 +21,7 @@ signal died()
 var current_health: float = 100.0
 var attack_timer: Timer = null
 var attack_target: Node2D = null
+var health_bar: TextureProgressBar = null
 
 func _ready() -> void:
 	# Initialize health to max
@@ -45,13 +46,17 @@ func _ready() -> void:
 		attack_timer.timeout.connect(_attack_target)
 		add_child(attack_timer)
 
+	# Setup HealthBar if it exists
+	health_bar = get_node_or_null("HealthBar")
+	if health_bar:
+		_update_health_bar()
+
 func _on_attack_range_body_entered(body: Node2D) -> void:
 	"""Handle target entering attack range"""
 	if body.is_in_group("slime"):
 		attack_target = body
 		if attack_timer:
 			attack_timer.start()
-			_attack_target()  # Attack immediately
 
 func _on_attack_range_body_exited(body: Node2D) -> void:
 	"""Handle target leaving attack range"""
@@ -91,6 +96,7 @@ func take_damage(amount: float) -> void:
 	# Apply damage
 	current_health = max(0.0, current_health - actual_damage)
 	health_changed.emit(current_health, max_health)
+	_update_health_bar()
 
 	# Check for death
 	if current_health <= 0.0:
@@ -100,9 +106,16 @@ func heal(amount: float) -> void:
 	"""Restore health, clamped to max_health"""
 	current_health = min(max_health, current_health + amount)
 	health_changed.emit(current_health, max_health)
+	_update_health_bar()
 
 func die() -> void:
 	"""Handle entity death - can be overridden by child classes"""
 	died.emit()
 	# Default behavior: remove from scene
 	queue_free()
+
+func _update_health_bar() -> void:
+	"""Update the health bar visual"""
+	if health_bar:
+		health_bar.max_value = max_health
+		health_bar.value = current_health

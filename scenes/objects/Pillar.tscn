@@ -13,6 +13,7 @@ script = ExtResource("1_418gg")
 max_health = 200.0
 physical_damage = 0.0
 physical_defense = 0.0
+bounciness = 0.98
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -10.999999)

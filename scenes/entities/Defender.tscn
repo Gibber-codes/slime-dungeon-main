@@ -1,15 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://bm6irlx0ukdwi"]
 
 [ext_resource type="Texture2D" uid="uid://bgwd35de8ybb2" path="res://assets/sprites/Rat_2.png" id="1_dr508"]
-[ext_resource type="Script" uid="uid://cv88ssvdcpbop" path="res://scripts/entities/Defender.gd" id="1_eblc1"]
+[ext_resource type="Script" uid="uid://bdie2gvoq08l5" path="res://scripts/core/BaseEntity.gd" id="1_eblc1"]
 [ext_resource type="Texture2D" uid="uid://cyyl2bfji2blu" path="res://underBars.png" id="3_w5mmj"]
 [ext_resource type="Texture2D" uid="uid://bwa6sswbsb7u4" path="res://healthProgress.png" id="4_ayt6n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0l4kg"]
-radius = 8.0
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eblc1"]
-radius = 12.0
+radius = 20.0
 
 [node name="Defender" type="StaticBody2D" groups=["seekable"]]
 collision_layer = 4
@@ -17,19 +17,18 @@ collision_mask = 3
 script = ExtResource("1_eblc1")
 max_health = 30.0
 physical_defense = 0.0
+attack_cooldown = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -7)
-scale = Vector2(0.015, 0.015)
+position = Vector2(0, -9)
+scale = Vector2(0.023, 0.023)
 texture = ExtResource("1_dr508")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_0l4kg")
 
 [node name="AttackRange" type="Area2D" parent="."]
-visible = false
-collision_layer = 17
+collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]

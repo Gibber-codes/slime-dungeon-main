@@ -1,0 +1,16 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://bmp3bgr8aotmp"]
+
+[ext_resource type="PackedScene" uid="uid://bm6irlx0ukdwi" path="res://scenes/entities/Defender.tscn" id="1_3cmwg"]
+[ext_resource type="PackedScene" uid="uid://dgfik7xhu8k8s" path="res://scenes/objects/Pillar.tscn" id="2_6xlqb"]
+[ext_resource type="PackedScene" uid="uid://d1a2b3c4e5f6j" path="res://scenes/objects/Pot.tscn" id="3_7k3jh"]
+[ext_resource type="PackedScene" uid="uid://iwgt8eff6ktc" path="res://scenes/objects/Vase.tscn" id="4_rm6kx"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_arxtv"]
+scenes/1/scene = ExtResource("1_3cmwg")
+scenes/2/scene = ExtResource("2_6xlqb")
+scenes/3/scene = ExtResource("3_7k3jh")
+scenes/4/scene = ExtResource("4_rm6kx")
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_arxtv")
