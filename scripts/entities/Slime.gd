@@ -287,13 +287,10 @@ func _hit_freeze() -> void:
 		return
 	_freezing = true
 	var was_physics: bool = is_physics_processing()
-	var saved_velocity: Vector2 = velocity
-	velocity = Vector2.ZERO
 	set_physics_process(false)
 	# ignore_time_scale = true so this timer finishes even if global time_scale changes.
 	await get_tree().create_timer(0.04, true, false, true).timeout
 	set_physics_process(was_physics)
-	velocity = saved_velocity
 	_freezing = false
 
 # =============================================================================
