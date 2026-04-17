@@ -1,36 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm6irlx0ukdwi"]
+[gd_scene load_steps=7 format=3 uid="uid://bm6irlx0ukdwi"]
 
-[ext_resource type="Texture2D" uid="uid://bgwd35de8ybb2" path="res://assets/sprites/Rat_2.png" id="1_dr508"]
 [ext_resource type="Script" uid="uid://cv88ssvdcpbop" path="res://scripts/entities/Defender.gd" id="1_eblc1"]
+[ext_resource type="Resource" path="res://resources/entities/basic_defender.tres" id="2_data"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0l4kg"]
+radius = 10.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eblc1"]
 radius = 24.083189
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd_fill"]
+bg_color = Color(1, 0.6, 0.15, 1)
+corner_radius_bottom_left = 1
+corner_radius_bottom_right = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd_bg"]
+bg_color = Color(0.1, 0.1, 0.1, 0.4)
+corner_radius_bottom_left = 1
+corner_radius_bottom_right = 1
+
 [node name="Defender" type="CharacterBody2D"]
+z_index = 5
+input_pickable = true
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_eblc1")
+entity_data = ExtResource("2_data")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 scale = Vector2(0.019, 0.019)
-texture = ExtResource("1_dr508")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0l4kg")
 
 [node name="AttackRange" type="Area2D" parent="."]
-collision_layer = 17
-collision_mask = 3
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_eblc1")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -35.0
-offset_top = -44.0
-offset_right = 36.0
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 16.0
 offset_bottom = -17.0
+show_percentage = false
+
+[node name="CooldownBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -17.0
+offset_right = 16.0
+offset_bottom = -15.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_cd_fill")
+theme_override_styles/background = SubResource("StyleBoxFlat_cd_bg")
+max_value = 1.0
 show_percentage = false

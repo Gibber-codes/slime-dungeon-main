@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://dx8kutin2mcep"]
+
+[ext_resource type="Script" uid="uid://ige3fmghp2t3" path="res://scripts/systems/EntityData.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c22dm4213wjwy" path="res://assets/sprites/Vase.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1")
+id = "vase"
+display_name = "Vase"
+description = "A fragile decorative vase. Shatters easily for a small energy reward."
+entity_category = 1
+scene_path = "res://scenes/entities/breakables/Vase.tscn"
+max_health = 80.0
+physical_defense = 2.0
+damage_scale = 1.0
+energy_reward = 2.0
+sprite_texture = ExtResource("2_tex")
+sprite_scale = Vector2(0.028, 0.028)
+draw_color = Color(0.7, 0.45, 0.25, 1)
+groups = Array[String](["room_entities", "breakables"])

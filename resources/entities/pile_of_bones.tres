@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://bdxjy3w2d1gd1"]
+
+[ext_resource type="Script" uid="uid://ige3fmghp2t3" path="res://scripts/systems/EntityData.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cyjyhjcum01l3" path="res://assets/sprites/Pile_Of_Bones.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1")
+id = "pile_of_bones"
+display_name = "Pile of Bones"
+description = "A grim reminder of those who came before. Break it apart for energy."
+entity_category = 1
+scene_path = "res://scenes/entities/breakables/PileOfBones.tscn"
+max_health = 60.0
+physical_defense = 1.0
+damage_scale = 1.0
+energy_reward = 2.0
+sprite_texture = ExtResource("2_tex")
+sprite_scale = Vector2(0.014, 0.014)
+draw_color = Color(0.85, 0.82, 0.72, 1)
+groups = Array[String](["room_entities", "breakables"])

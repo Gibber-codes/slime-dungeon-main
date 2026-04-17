@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SlimeData" format=3 uid="uid://df0p40rryogu7"]
+
+[ext_resource type="Script" uid="uid://d0g68823gs47h" path="res://scripts/resources/SlimeData.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dnd1ydxjm8sn6" path="res://assets/sprites/Slime.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1")
+base_damage = 15.0
+sprite_texture = ExtResource("2_tex")

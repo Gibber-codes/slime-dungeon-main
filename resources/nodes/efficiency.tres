@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/NodeStat.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "efficiency"
+display_name = "Efficiency"
+description = "Reduces Elemental Energy cost of all abilities."
+tier = 3
+parent_id = "intuition"
+branch = "wisdom"
+is_implemented = false
+base_cost = 60
+cost_multiplier = 1.18
+bonus_key = "elemental_cost_reduction"
+value_per_level = 0.05
+bonus_key_2 = ""
+value_per_level_2 = 0
+threshold_levels = Array[int]([])
+threshold_bonus_key = ""

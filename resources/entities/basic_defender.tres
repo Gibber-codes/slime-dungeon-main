@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/EntityData.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bgwd35de8ybb2" path="res://assets/sprites/Rat_2.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1")
+id = "basic_defender"
+display_name = "Rat Guard"
+description = "A basic dungeon defender. Attacks the slime when it gets too close."
+entity_category = 0
+scene_path = "res://scenes/entities/Defender.tscn"
+max_health = 150.0
+physical_damage = 5.0
+physical_defense = 3.0
+health_regen = 0.0
+can_attack = true
+attack_range = 38.4
+attack_speed = 0.2
+attack_cooldown = 2.0
+health_scale = 1.12
+damage_scale = 1.08
+defense_scale = 1.05
+energy_reward = 5.0
+sprite_texture = ExtResource("2_tex")
+sprite_scale = Vector2(0.019, 0.019)
+sprite_offset = Vector2(0, -8)
+draw_color = Color(0.6, 0.4, 0.25, 1)
+is_destructible = true
+blocks_room_clear = true
+groups = Array[String](["room_entities", "defenders"])

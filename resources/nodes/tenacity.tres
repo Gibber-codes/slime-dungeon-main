@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/NodeStat.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "tenacity"
+display_name = "Tenacity"
+description = "Reduces ALL low-health penalties: speed, damage, defense, initiative."
+tier = 3
+parent_id = "mass"
+branch = "constitution"
+is_implemented = false
+base_cost = 60
+cost_multiplier = 1.18
+bonus_key = "low_hp_reduction"
+value_per_level = 0.05
+bonus_key_2 = ""
+value_per_level_2 = 0
+threshold_levels = Array[int]([])
+threshold_bonus_key = ""

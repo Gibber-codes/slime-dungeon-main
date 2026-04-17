@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b_mininodetree_01"]
+
+[ext_resource type="Script" path="res://scripts/ui/MiniNodeTree.gd" id="1"]
+
+[node name="MiniNodeTree" type="Control"]
+custom_minimum_size = Vector2(0, 200)
+size_flags_horizontal = 3
+script = ExtResource("1")

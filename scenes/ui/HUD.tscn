@@ -1,3 +1,211 @@
-[gd_scene format=3 uid="uid://y18oyxrqu456"]
+[gd_scene load_steps=8 format=3 uid="uid://y18oyxrqu456"]
 
-[node name="Hud" type="Node2D"]
+[ext_resource type="Script" uid="uid://hed2f2h0ykyw" path="res://scripts/ui/HUD.gd" id="1_hud"]
+[ext_resource type="PackedScene" uid="uid://b_statusbar_01" path="res://scenes/ui/widgets/StatusBar.tscn" id="2_sbar"]
+[ext_resource type="PackedScene" uid="uid://b_statrow_01" path="res://scenes/ui/widgets/StatRow.tscn" id="3_srow"]
+[ext_resource type="PackedScene" uid="uid://b_nodetreeview_01" path="res://scenes/ui/NodeTreeView.tscn" id="4_ntv"]
+[ext_resource type="PackedScene" uid="uid://b_mininodetree_01" path="res://scenes/ui/MiniNodeTree.tscn" id="5_mnt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tooltip"]
+bg_color = Color(0.08, 0.08, 0.12, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.4, 0.5, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_me"]
+font_color = Color(0.75, 0.75, 0.75, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Root" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LeftPanel" type="PanelContainer" parent="Root"]
+custom_minimum_size = Vector2(280, 0)
+
+[node name="VBox" type="VBoxContainer" parent="Root/LeftPanel"]
+
+[node name="CollapseBtn" type="Button" parent="Root/LeftPanel/VBox"]
+text = "◀ Hide"
+
+[node name="Tabs" type="TabContainer" parent="Root/LeftPanel/VBox"]
+size_flags_vertical = 3
+
+[node name="Info" type="ScrollContainer" parent="Root/LeftPanel/VBox/Tabs"]
+
+[node name="EntityInfoBox" type="VBoxContainer" parent="Root/LeftPanel/VBox/Tabs/Info"]
+size_flags_horizontal = 3
+
+[node name="Karma" type="ScrollContainer" parent="Root/LeftPanel/VBox/Tabs"]
+visible = false
+
+[node name="KarmaBox" type="VBoxContainer" parent="Root/LeftPanel/VBox/Tabs/Karma"]
+size_flags_horizontal = 3
+
+[node name="Settings" type="ScrollContainer" parent="Root/LeftPanel/VBox/Tabs"]
+visible = false
+
+[node name="VBox" type="VBoxContainer" parent="Root/LeftPanel/VBox/Tabs/Settings"]
+size_flags_horizontal = 3
+
+[node name="Hint" type="Label" parent="Root/LeftPanel/VBox/Tabs/Settings/VBox"]
+text = "Settings coming soon."
+horizontal_alignment = 1
+
+[node name="Shop" type="ScrollContainer" parent="Root/LeftPanel/VBox/Tabs"]
+visible = false
+
+[node name="VBox" type="VBoxContainer" parent="Root/LeftPanel/VBox/Tabs/Shop"]
+size_flags_horizontal = 3
+
+[node name="Hint" type="Label" parent="Root/LeftPanel/VBox/Tabs/Shop/VBox"]
+text = "Boosts & cosmetics
+coming soon."
+horizontal_alignment = 1
+
+[node name="CenterArea" type="Control" parent="Root"]
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="NodeTreeView" parent="Root/CenterArea" instance=ExtResource("4_ntv")]
+visible = false
+
+[node name="RightPanel" type="PanelContainer" parent="Root"]
+custom_minimum_size = Vector2(320, 0)
+
+[node name="Margin" type="MarginContainer" parent="Root/RightPanel"]
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="Root/RightPanel/Margin"]
+theme_override_constants/separation = 4
+
+[node name="Header" type="HBoxContainer" parent="Root/RightPanel/Margin/VBox"]
+
+[node name="RoomLabel" type="Label" parent="Root/RightPanel/Margin/VBox/Header"]
+size_flags_horizontal = 3
+text = "Room: 1/40"
+
+[node name="MultLabel" type="Label" parent="Root/RightPanel/Margin/VBox/Header"]
+text = "x1.00"
+
+[node name="MELabel" type="Label" parent="Root/RightPanel/Margin/VBox"]
+text = "ME: 0"
+label_settings = SubResource("LabelSettings_me")
+
+[node name="Sep1" type="HSeparator" parent="Root/RightPanel/Margin/VBox"]
+
+[node name="StatusHeader" type="Label" parent="Root/RightPanel/Margin/VBox"]
+text = "— Status —"
+horizontal_alignment = 1
+
+[node name="HpBar" parent="Root/RightPanel/Margin/VBox" instance=ExtResource("2_sbar")]
+label_text = "HP"
+bar_color = Color(0.85, 0.15, 0.15, 1)
+
+[node name="SpeedBar" parent="Root/RightPanel/Margin/VBox" instance=ExtResource("2_sbar")]
+label_text = "Speed"
+bar_color = Color(0.95, 0.55, 0.1, 1)
+
+[node name="SeekBar" parent="Root/RightPanel/Margin/VBox" instance=ExtResource("2_sbar")]
+label_text = "Seek"
+bar_color = Color(0.2, 0.45, 0.9, 1)
+
+[node name="MtmBar" parent="Root/RightPanel/Margin/VBox" instance=ExtResource("2_sbar")]
+label_text = "Mtm"
+bar_color = Color(1, 0.6, 0.2, 1)
+
+[node name="Sep2" type="HSeparator" parent="Root/RightPanel/Margin/VBox"]
+
+[node name="StatsHeader" type="Label" parent="Root/RightPanel/Margin/VBox"]
+text = "— Primary Stats —"
+horizontal_alignment = 1
+
+[node name="StatsScroll" type="ScrollContainer" parent="Root/RightPanel/Margin/VBox"]
+size_flags_vertical = 3
+
+[node name="StatBox" type="VBoxContainer" parent="Root/RightPanel/Margin/VBox/StatsScroll"]
+size_flags_horizontal = 3
+
+[node name="MaxHp" parent="Root/RightPanel/Margin/VBox/StatsScroll/StatBox" instance=ExtResource("3_srow")]
+key = "max_hp"
+stat_name = "Max HP"
+dot_color = Color(0.85, 0.15, 0.15, 1)
+
+[node name="HpRegen" parent="Root/RightPanel/Margin/VBox/StatsScroll/StatBox" instance=ExtResource("3_srow")]
+key = "hp_regen"
+stat_name = "HP Regen"
+dot_color = Color(0.85, 0.15, 0.15, 1)
+
+[node name="Defense" parent="Root/RightPanel/Margin/VBox/StatsScroll/StatBox" instance=ExtResource("3_srow")]
+key = "defense"
+stat_name = "Defense"
+dot_color = Color(0.85, 0.15, 0.15, 1)
+
+[node name="PhysDmg" parent="Root/RightPanel/Margin/VBox/StatsScroll/StatBox" instance=ExtResource("3_srow")]
+key = "phys_dmg"
+stat_name = "Phys DMG"
+dot_color = Color(0.6, 0.15, 0.85, 1)
+
+[node name="MaxSpeed" parent="Root/RightPanel/Margin/VBox/StatsScroll/StatBox" instance=ExtResource("3_srow")]
+key = "max_speed"
+stat_name = "Max Speed"
+dot_color = Color(0.95, 0.55, 0.1, 1)
+
+[node name="SecondaryHeader" type="Label" parent="Root/RightPanel/Margin/VBox/StatsScroll/StatBox"]
+text = "— Secondary —"
+horizontal_alignment = 1
+
+[node name="MomDmg" parent="Root/RightPanel/Margin/VBox/StatsScroll/StatBox" instance=ExtResource("3_srow")]
+key = "mom_dmg"
+stat_name = "Mtm DMG"
+dot_color = Color(0.6, 0.15, 0.85, 1)
+
+[node name="MomSpd" parent="Root/RightPanel/Margin/VBox/StatsScroll/StatBox" instance=ExtResource("3_srow")]
+key = "mom_spd"
+stat_name = "Mtm Spd"
+dot_color = Color(1, 0.6, 0.2, 1)
+
+[node name="SeekTime" parent="Root/RightPanel/Margin/VBox/StatsScroll/StatBox" instance=ExtResource("3_srow")]
+key = "seek_time"
+stat_name = "Seek Timer"
+dot_color = Color(0.2, 0.45, 0.9, 1)
+
+[node name="Focus" parent="Root/RightPanel/Margin/VBox/StatsScroll/StatBox" instance=ExtResource("3_srow")]
+key = "focus"
+stat_name = "Focus"
+dot_color = Color(0.95, 0.85, 0.1, 1)
+
+[node name="FocusLabel" type="Label" parent="Root/RightPanel/Margin/VBox/StatsScroll/StatBox"]
+text = "Focus at <= 2 enemies"
+
+[node name="Sep3" type="HSeparator" parent="Root/RightPanel/Margin/VBox"]
+
+[node name="MiniNodeTree" parent="Root/RightPanel/Margin/VBox" instance=ExtResource("5_mnt")]
+
+[node name="Tooltip" type="PanelContainer" parent="."]
+visible = false
+z_index = 100
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tooltip")
+
+[node name="Label" type="Label" parent="Tooltip"]
+mouse_filter = 2

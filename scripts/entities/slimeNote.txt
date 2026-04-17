@@ -1,3 +1,0 @@
-Slime.gd Handles bouncing physics,
-collisions, auto-seek, focus mode,
-and signals to GameManager.

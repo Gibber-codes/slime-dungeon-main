@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/NodeStat.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "mass"
+display_name = "Mass"
+description = "Increases base physical defense. Flat damage reduction."
+tier = 2
+parent_id = "constitution"
+branch = "constitution"
+is_implemented = false
+base_cost = 30
+cost_multiplier = 1.15
+bonus_key = "physical_defense"
+value_per_level = 2
+bonus_key_2 = ""
+value_per_level_2 = 0
+threshold_levels = Array[int]([])
+threshold_bonus_key = ""

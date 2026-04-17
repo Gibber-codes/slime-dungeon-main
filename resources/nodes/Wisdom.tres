@@ -1,12 +1,21 @@
-[gd_resource type="Resource" script_class="NodeStat" load_steps=2 format=3]
+[gd_resource type="Resource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/systems/NodeStat.gd" id="1_w1s2d"]
+[ext_resource type="Script" path="res://scripts/systems/NodeStat.gd" id="1"]
 
 [resource]
-script = ExtResource("1_w1s2d")
-name = "Wisdom"
-level = 0
-base_cost = 10.0
+script = ExtResource("1")
+id = "wisdom"
+display_name = "Wisdom"
+description = "Increases Monster Energy yield from all sources."
+tier = 1
+parent_id = ""
+branch = "wisdom"
+is_implemented = true
+base_cost = 10
 cost_multiplier = 1.15
-value_per_level = 1.0
-
+bonus_key = "energy_mult"
+value_per_level = 0.05
+bonus_key_2 = ""
+value_per_level_2 = 0
+threshold_levels = Array[int]([])
+threshold_bonus_key = ""

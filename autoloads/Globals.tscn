@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://p4qvdaid3ha5"]
+
+[ext_resource type="Script" uid="uid://dagw2op7hyk4a" path="res://autoloads/Globals.gd" id="1_glob"]
+
+[node name="Globals" type="Node" unique_id=840210410]
+script = ExtResource("1_glob")
+enable_testing_cheats = true

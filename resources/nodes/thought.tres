@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/NodeStat.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "thought"
+display_name = "Thought"
+description = "Increases Monster Energy transfer speed through all Slime Core connections."
+tier = 2
+parent_id = "intelligence"
+branch = "intelligence"
+is_implemented = true
+base_cost = 30
+cost_multiplier = 1.15
+bonus_key = "flow_speed_mult"
+value_per_level = 0.1
+bonus_key_2 = ""
+value_per_level_2 = 0
+threshold_levels = Array[int]([])
+threshold_bonus_key = ""

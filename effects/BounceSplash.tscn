@@ -1,4 +1,6 @@
-[gd_scene load_steps=0 format=3 uid="uid://d4a5b6c7e8gai"]
+[gd_scene load_steps=2 format=3 uid="uid://d4a5b6c7e8gai"]
+
+[ext_resource type="Script" path="res://scripts/effects/BounceSplash.gd" id="1_bounce"]
 
 [node name="BounceSplash" type="Node2D"]
-
+script = ExtResource("1_bounce")

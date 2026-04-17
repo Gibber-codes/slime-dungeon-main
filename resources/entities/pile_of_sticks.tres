@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://cj4pwwcujg2ho"]
+
+[ext_resource type="Script" uid="uid://ige3fmghp2t3" path="res://scripts/systems/EntityData.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://nttpytde2uuh" path="res://assets/sprites/Pile_Of_Sticks.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1")
+id = "pile_of_sticks"
+display_name = "Pile of Sticks"
+description = "A bundle of dry wood. Smash through it for a small energy reward."
+entity_category = 1
+scene_path = "res://scenes/entities/breakables/PileOfSticks.tscn"
+max_health = 40.0
+damage_scale = 1.0
+energy_reward = 1.5
+sprite_texture = ExtResource("2_tex")
+sprite_scale = Vector2(0.028, 0.028)
+draw_color = Color(0.55, 0.42, 0.28, 1)
+groups = Array[String](["room_entities", "breakables"])

@@ -1,40 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq6a0wjko45ta"]
+[gd_scene format=3 uid="uid://dq6a0wjko45ta"]
 
 [ext_resource type="PackedScene" uid="uid://dxld6p7bttxv8" path="res://scenes/rooms/Room.tscn" id="2_room"]
-[ext_resource type="PackedScene" uid="uid://dfl28fd40ljiv" path="res://scenes/entities/Slime.tscn" id="3_hud"]
+[ext_resource type="PackedScene" uid="uid://dfl28fd40ljiv" path="res://scenes/entities/Slime.tscn" id="3_slime"]
+[ext_resource type="Script" uid="uid://i48m0wfntnj4" path="res://scripts/systems/RoomManager.gd" id="4_rmgr"]
+[ext_resource type="Script" uid="uid://btxlxwtom0xxx" path="res://scripts/core/Main.gd" id="5_main"]
+[ext_resource type="Script" uid="uid://3jx3kbq852jb" path="res://scripts/core/CameraFollow.gd" id="6_cam"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" unique_id=268408027]
+script = ExtResource("5_main")
 
-[node name="RoomManager" type="Node" parent="."]
+[node name="RoomManager" type="Node" parent="." unique_id=1293056778]
+script = ExtResource("4_rmgr")
 
-[node name="GameManager" type="Node" parent="."]
-
-[node name="Slime" parent="." instance=ExtResource("3_hud")]
+[node name="Slime" parent="." unique_id=1568852229 instance=ExtResource("3_slime")]
 position = Vector2(0, 64)
 
-[node name="Room" parent="." instance=ExtResource("2_room")]
+[node name="Room" parent="." unique_id=1313093544 instance=ExtResource("2_room")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="UI" type="CanvasLayer" parent="."]
-offset = Vector2(0, -0.06)
-rotation = -0.08726646
-transform = Transform2D(0.9961947, -0.08715574, 0.08715574, 0.9961947, 0, -0.06)
-
-[node name="SlimeHealth" type="ProgressBar" parent="UI"]
-offset_left = 173.0
-offset_top = -146.0
-offset_right = 398.0
-offset_bottom = -119.0
-
-[node name="SpeedBar" type="ProgressBar" parent="UI"]
-offset_left = 173.0
-offset_top = -115.0
-offset_right = 398.0
-offset_bottom = -88.0
-
-[node name="momentiumBar" type="ProgressBar" parent="UI"]
-offset_left = 173.0
-offset_top = -84.0
-offset_right = 398.0
-offset_bottom = -57.0
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1159741157]
+zoom = Vector2(1.8, 1.8)
+script = ExtResource("6_cam")

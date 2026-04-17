@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://00541emcptg1"]
+
+[ext_resource type="Script" uid="uid://ige3fmghp2t3" path="res://scripts/systems/EntityData.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://di5rk34iwr713" path="res://assets/sprites/Pot.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1")
+id = "pot"
+display_name = "Pot"
+description = "A clay pot. Smash it for a small energy reward."
+entity_category = 1
+scene_path = "res://scenes/entities/breakables/Pot.tscn"
+max_health = 80.0
+physical_defense = 2.0
+damage_scale = 1.0
+energy_reward = 2.0
+sprite_texture = ExtResource("2_tex")
+sprite_scale = Vector2(0.02, 0.02)
+draw_color = Color(0.6, 0.35, 0.2, 1)
+groups = Array[String](["room_entities", "breakables"])

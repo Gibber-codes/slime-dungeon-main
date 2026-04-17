@@ -1,93 +1,107 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxld6p7bttxv8"]
+[gd_scene load_steps=8 format=3 uid="uid://dxld6p7bttxv8"]
 
-[ext_resource type="Script" uid="uid://cmjjacbuytey5" path="res://scripts/systems/Room.gd" id="1_iaoa5"]
-[ext_resource type="Texture2D" uid="uid://dlq50psvdtvy8" path="res://assets/tilesets/dungeon_tiles_middle.png" id="2_yvx7d"]
-[ext_resource type="Texture2D" uid="uid://bwfxi01jsxt7w" path="res://assets/tilesets/dungeon_tiles_edge.png" id="3_vvy2w"]
-[ext_resource type="Texture2D" uid="uid://cjvaj4xsagw0r" path="res://assets/tilesets/dungeon_tiles_corner.png" id="4_3n8xs"]
-[ext_resource type="Texture2D" uid="uid://cxgvhgg0mspor" path="res://assets/tilesets/dungeon_tiles.png" id="5_vvy2w"]
-[ext_resource type="PackedScene" uid="uid://bm6irlx0ukdwi" path="res://scenes/entities/Defender.tscn" id="6_3n8xs"]
+[ext_resource type="Script" uid="uid://cmjjacbuytey5" path="res://scripts/systems/Room.gd" id="1_room"]
+[ext_resource type="PackedScene" uid="uid://bm6irlx0ukdwi" path="res://scenes/entities/Defender.tscn" id="2_def"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1o45p"]
-texture = ExtResource("2_yvx7d")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit"]
+size = Vector2(48, 24)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h8v3a"]
-texture = ExtResource("3_vvy2w")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_h"]
+size = Vector2(136, 16)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvxix"]
-texture = ExtResource("4_3n8xs")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_v"]
+size = Vector2(16, 352)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3n8xs"]
-texture = ExtResource("5_vvy2w")
-margins = Vector2i(11, 12)
-texture_region_size = Vector2i(32, 32)
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:3/0 = 0
-3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_3n8xs"]
-scenes/1/scene = ExtResource("6_3n8xs")
-
-[sub_resource type="TileSet" id="TileSet_iaoa5"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_1o45p")
-sources/1 = SubResource("TileSetAtlasSource_h8v3a")
-sources/2 = SubResource("TileSetAtlasSource_rvxix")
-sources/3 = SubResource("TileSetAtlasSource_3n8xs")
-sources/4 = SubResource("TileSetScenesCollectionSource_3n8xs")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pnwq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
+size = Vector2(48, 16)
 
 [node name="Room" type="Node2D"]
-z_index = -1
-script = ExtResource("1_iaoa5")
+y_sort_enabled = true
+script = ExtResource("1_room")
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_iaoa5")
-rendering_quadrant_size = 22
-collision_animatable = true
-collision_visibility_mode = 1
-format = 2
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 65535, 0, 0, -1, 0, 0, -65536, 0, 0, 65536, 0, 0, 131071, 0, 0, 131070, 0, 0, 65534, 0, 0, -2, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -65535, 0, 0, 1, 0, 0, 65537, 0, 0, -196606, 0, 0, 131074, 0, 0, -196607, 0, 0, -131070, 0, 0, -65534, 0, 0, 2, 0, 0, 65538, 0, 0, 131073, 0, 0, 131072, 0, 0, 196607, 0, 0, 196606, 0, 0, 262141, 1, 805306368, 262142, 1, 805306368, 262143, 1, 805306368, 196608, 1, 805306368, 196609, 1, 805306368, 196610, 1, 805306368, 131075, 1, 1342177280, 65539, 1, 1342177280, -262142, 1, 0, -262143, 1, 0, -262144, 1, 0, -196609, 1, 0, -196610, 1, 0, -196611, 1, 0, -131076, 1, 1610612736, -65540, 1, 1610612736, -4, 1, 1610612736, 65532, 1, 1610612736, 131068, 1, 1610612736, 196604, 1, 1610612736, 196611, 2, 805306368, 262140, 2, 1610612736, -196612, 2, 0, 196605, 0, 0, 131069, 0, 0, 65533, 0, 0, -3, 0, 0, -65539, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196605, 1, 1342177280, -131069, 1, 1342177280, -65533, 1, 1342177280, 3, 1, 1342177280, -262141, 2, 1342177280, -262140, 196611, 2, -196604, 196611, 2, -131068, 196611, 2, -65532, 196611, 2, 4, 196611, 2, 65540, 196611, 2, 131076, 196611, 2, 196612, 196611, 2, -327676, 196611, 1610612739, -327677, 196611, 1610612738, -327678, 196611, 1610612738, -327679, 196611, 1610612738, -327680, 196611, 1610612738, -262145, 196611, 1610612738, -262146, 196611, 1610612738, -262147, 196611, 1610612738, -262148, 196611, 1610612738, -262149, 196611, 1879048195, -196613, 196611, 805306370, -131077, 196611, 805306370, -65541, 196611, 805306370, -5, 196611, 805306370, 65531, 196611, 805306370, 131067, 196611, 805306370, 196603, 196611, 805306370, 262139, 196611, 805306370, 327676, 65539, 3, 327677, 65539, 3, 327678, 65539, 3, 327679, 65539, 3, 262144, 65539, 3, 262145, 65539, 3, 262146, 65539, 3, 262147, 65539, 3, 262148, 196611, 3, 327675, 196611, 268435459)
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="TopLeft" type="StaticBody2D" parent="Walls"]
+position = Vector2(-92, -168)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopLeft"]
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="TopRight" type="StaticBody2D" parent="Walls"]
+position = Vector2(92, -168)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopRight"]
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="BottomLeft" type="StaticBody2D" parent="Walls"]
+position = Vector2(-92, 168)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomLeft"]
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="BottomRight" type="StaticBody2D" parent="Walls"]
+position = Vector2(92, 168)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomRight"]
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="Left" type="StaticBody2D" parent="Walls"]
+position = Vector2(-168, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left"]
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="Right" type="StaticBody2D" parent="Walls"]
+position = Vector2(168, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="ExitDoor" type="StaticBody2D" parent="."]
+position = Vector2(0, -168)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor"]
+shape = SubResource("RectangleShape2D_door")
+
+[node name="EntryDoor" type="StaticBody2D" parent="."]
+position = Vector2(0, 168)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryDoor"]
+disabled = true
+shape = SubResource("RectangleShape2D_door")
 
 [node name="Defenders" type="Node2D" parent="."]
-position = Vector2(-96, -96)
+y_sort_enabled = true
 
-[node name="Defender" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(31, 45)
+[node name="Defender" parent="Defenders" instance=ExtResource("2_def")]
 
-[node name="Defender2" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(162, 49)
+[node name="Defender2" parent="Defenders" instance=ExtResource("2_def")]
 
-[node name="Defender3" parent="Defenders" instance=ExtResource("6_3n8xs")]
-position = Vector2(14, 148)
-
-[node name="Obstacles" type="Node2D" parent="."]
-position = Vector2(-96, -96)
+[node name="Defender3" parent="Defenders" instance=ExtResource("2_def")]
 
 [node name="ExitZone" type="Area2D" parent="."]
-position = Vector2(0, -96)
+position = Vector2(0, -168)
 collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone"]
-shape = SubResource("RectangleShape2D_1pnwq")
+shape = SubResource("RectangleShape2D_exit")
 
 [node name="SlimeSpawn" type="Marker2D" parent="."]
-position = Vector2(0, 80)
+position = Vector2(0, 128)
